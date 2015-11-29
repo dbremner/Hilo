@@ -62,7 +62,7 @@ HRESULT SimpleImage::SetDrawingRect(const D2D1_RECT_F& rect)
 //
 // Retrieves the current crop rectangle of this image
 //
-HRESULT SimpleImage::GetClipRect(D2D1_RECT_F* rect)
+HRESULT SimpleImage::GetClipRect(__out D2D1_RECT_F* rect)
 {
     if (rect == nullptr)
     {
@@ -76,7 +76,7 @@ HRESULT SimpleImage::GetClipRect(D2D1_RECT_F* rect)
 
 //
 // Retrieves the current ImageInfo struct for this image
-HRESULT SimpleImage::GetImageInfo(ImageInfo* info)
+HRESULT SimpleImage::GetImageInfo(__out ImageInfo* info)
 {
     if (nullptr == info)
     {
@@ -91,7 +91,7 @@ HRESULT SimpleImage::GetImageInfo(ImageInfo* info)
 //
 // Specifies the bounding rectangle used to calculate the drawing rectangle for this image
 //
-HRESULT SimpleImage::SetBoundingRect(const D2D1_RECT_F& rect)
+HRESULT SimpleImage::SetBoundingRect(__in const D2D1_RECT_F& rect)
 {
     m_boundingRect = rect;
     CalculateDrawingRect();
@@ -103,7 +103,7 @@ HRESULT SimpleImage::SetBoundingRect(const D2D1_RECT_F& rect)
 //
 // Specifies the current rendering parameters for this image
 //
-HRESULT SimpleImage::SetRenderingParameters(const RenderingParameters& renderingParameters)
+HRESULT SimpleImage::SetRenderingParameters(__in const RenderingParameters& renderingParameters)
 {
     m_renderingParameters = renderingParameters;
 

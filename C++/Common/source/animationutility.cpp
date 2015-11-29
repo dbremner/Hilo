@@ -25,7 +25,7 @@ AnimationUtility::~AnimationUtility()
 {
 }
 
-HRESULT AnimationUtility::GetAnimationTimer(IUIAnimationTimer **animationTimer)
+HRESULT AnimationUtility::GetAnimationTimer(__out IUIAnimationTimer **animationTimer)
 {
     HRESULT hr = Initialize();
     if (SUCCEEDED(hr))
