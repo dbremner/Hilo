@@ -208,10 +208,9 @@ int FlickrUploader::SendWebRequest(const HINTERNET *request, const std::wstring&
         // Convert wstring to string
         std::wstring wideString = sb.str();
         int stringSize = WideCharToMultiByte(CP_ACP, 0, wideString.c_str(), -1, nullptr, 0, nullptr, nullptr);
-        char* temp = new char[stringSize];
-        WideCharToMultiByte(CP_ACP, 0, wideString.c_str(), -1, temp, stringSize, nullptr, nullptr);
-        std::string str = temp;
-        delete [] temp;
+	    std::vector<char> temp; temp.resize(stringSize);
+        WideCharToMultiByte(CP_ACP, 0, wideString.c_str(), -1, &temp[0], stringSize, nullptr, nullptr);
+		std::string str{ temp.begin(), temp.end() };
 
         // Add the photo to the stream
         std::ifstream f(fileName, std::ios::binary);
@@ -534,14 +533,10 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
         status = BCryptGetProperty(algorithm, BCRYPT_OBJECT_LENGTH, reinterpret_cast<unsigned char*>(&hashObjectSize), sizeof(unsigned long), &dataSize, 0);
     }
     // Allocate the hash object on the heap
-    unsigned char* hashObject = nullptr;
+	std::vector<unsigned char> hashObj;
     if (NT_SUCCESS(status))
     {
-        hashObject = (unsigned char*) HeapAlloc(GetProcessHeap (), 0, hashObjectSize);
-        if (nullptr == hashObject)
-        {
-            status = STATUS_UNSUCCESSFUL;
-        }
+		hashObj.resize(hashObjectSize);
     }
     // Calculate the length of the hash
     unsigned long  hashSize = 0;
@@ -550,21 +545,13 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
         status = BCryptGetProperty(algorithm, BCRYPT_HASH_LENGTH, reinterpret_cast<unsigned char*>(&hashSize), sizeof(unsigned long), &dataSize, 0);
     }
     // Allocate the hash buffer on the heap
-    unsigned char* hash = nullptr;
-    if (NT_SUCCESS(status))
-    {
-        hash = (unsigned char*)HeapAlloc (GetProcessHeap(), 0, hashSize);
-
-        if (nullptr == hash)
-        {
-            status = STATUS_UNSUCCESSFUL;
-        }
-    }
+	std::vector<unsigned char> hash;
+	hash.resize(hashSize);
     // Create a hash
     BCRYPT_HASH_HANDLE cryptHash = nullptr;
     if (NT_SUCCESS(status))
     {
-        status = BCryptCreateHash(algorithm, &cryptHash, hashObject, hashObjectSize, nullptr, 0, 0);
+        status = BCryptCreateHash(algorithm, &cryptHash, &hashObj[0], hashObjectSize, nullptr, 0, 0);
     }
     // Hash data
     if (NT_SUCCESS(status))
@@ -574,7 +561,7 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
     // Close the hash and get hash data
     if (NT_SUCCESS(status))
     {
-        status = BCryptFinishHash(cryptHash, hash, hashSize, 0);
+        status = BCryptFinishHash(cryptHash, &hash[0], hashSize, 0);
     }
 
     std::wstring resultString;
@@ -601,15 +588,6 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
         BCryptDestroyHash(cryptHash);
     }
 
-    if(hashObject)
-    {
-        HeapFree(GetProcessHeap(), 0, hashObject);
-    }
-
-    if(hash)
-    {
-        HeapFree(GetProcessHeap(), 0, hash);
-    }
     return resultString;
 }
 //
