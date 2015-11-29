@@ -87,7 +87,7 @@ INT_PTR ShareDialog::DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
 
     case WM_CTLCOLORDLG:
         {
-            return (long)m_dialogBackgroundColor;
+            return reinterpret_cast<INT_PTR>(m_dialogBackgroundColor);
         }
 
     case WM_CTLCOLORSTATIC:
@@ -95,7 +95,7 @@ INT_PTR ShareDialog::DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
             HDC hdcStatic = (HDC)wParam;
             ::SetBkMode(hdcStatic, TRANSPARENT);
 
-            return (long)m_dialogBackgroundColor;
+            return reinterpret_cast<INT_PTR>(m_dialogBackgroundColor);
         }
 
     case WM_NOTIFY:
