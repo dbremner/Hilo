@@ -103,7 +103,6 @@ std::wstring FlickrUploader::GetToken(const std::wstring& frob)
 std::wstring FlickrUploader::UploadPhotos(const std::wstring& token, const std::wstring& fileName, bool* errorFound)
 {
     std::wstring outputString;
-    HINTERNET session = nullptr;
     HINTERNET connect = nullptr;
     HINTERNET request = nullptr;
 
@@ -114,7 +113,7 @@ std::wstring FlickrUploader::UploadPhotos(const std::wstring& token, const std::
     ZeroMemory(&proxyInfo, sizeof(proxyInfo));
 
     // Create the WinHTTP session.
-    session = ::WinHttpOpen( L"Hilo/1.0", WINHTTP_ACCESS_TYPE_NO_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
+	HINTERNET session = ::WinHttpOpen( L"Hilo/1.0", WINHTTP_ACCESS_TYPE_NO_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
     if (session)
     {
         connect = ::WinHttpConnect(session, L"api.flickr.com", INTERNET_DEFAULT_HTTP_PORT, 0);
