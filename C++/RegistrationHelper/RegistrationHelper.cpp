@@ -72,7 +72,7 @@ int _tmain(int argc, _TCHAR* argv[])
     ::LoadString(GetModuleHandle(nullptr), IDS_MESSAGE_TITLE, messageBoxTitle, MaxResourceStringLength);
 
     // Create an instance of FileRegistration class
-    FileRegistration fileRegistration(argv[2], argv[3], argv[4], argv[5], argc - 6, (const wchar_t**) &argv[6]);
+    FileRegistration fileRegistration(argv[2], argv[3], argv[4], argv[5], argc - 6, const_cast<const wchar_t**>(&argv[6]));
     bool requestRegistration = _wcsnicmp(L"TRUE", argv[1], sizeof(L"TRUE")) == 0;
     bool areFilesRegistered = fileRegistration.AreFileTypesRegistered();
 

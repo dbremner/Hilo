@@ -62,7 +62,7 @@ INT_PTR ShareDialog::DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
             m_dialogHandle = hDlg;
 
             // Initialize default values for dialog controls
-            ::SendDlgItemMessage(m_dialogHandle, IDC_SERVICE, CB_ADDSTRING, 0, (LPARAM)L"Flickr");
+            ::SendDlgItemMessage(m_dialogHandle, IDC_SERVICE, CB_ADDSTRING, 0, reinterpret_cast<LPARAM>(L"Flickr"));
             ::SendDlgItemMessage(m_dialogHandle, IDC_SERVICE, CB_SETCURSEL, 0, 0);
             ::SendDlgItemMessage(m_dialogHandle, IDC_RADIO_UPLOAD_SELECTION, BM_SETCHECK , BST_CHECKED, 0);
 
@@ -92,7 +92,7 @@ INT_PTR ShareDialog::DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
 
     case WM_CTLCOLORSTATIC:
         {
-            HDC hdcStatic = (HDC)wParam;
+            HDC hdcStatic = reinterpret_cast<HDC>(wParam);
             ::SetBkMode(hdcStatic, TRANSPARENT);
 
             return reinterpret_cast<INT_PTR>(m_dialogBackgroundColor);
@@ -101,12 +101,12 @@ INT_PTR ShareDialog::DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
     case WM_NOTIFY:
         {
             // Check if the syslink control was clicked
-            LPNMHDR pnmh = (LPNMHDR)lParam;
+            LPNMHDR pnmh = reinterpret_cast<LPNMHDR>(lParam);
             if (pnmh->idFrom == IDC_VIEW_PHOTOS_LINK)
             {
                 if ((pnmh->code == NM_CLICK) || (pnmh->code == NM_RETURN))
                 {
-                    PNMLINK link = (PNMLINK)lParam;
+                    PNMLINK link = reinterpret_cast<PNMLINK>(lParam);
                     ::ShellExecute(nullptr, L"open", link->item.szUrl, nullptr, nullptr, SW_SHOWNORMAL);
 
                     return static_cast<INT_PTR>(TRUE);
@@ -361,7 +361,7 @@ unsigned long WINAPI ShareDialog::ImageUploadThreadProc(void* /*threadData*/)
         ::ShowWindow(::GetDlgItem(m_dialogHandle, IDOK), SW_HIDE);
 
         // Change caption on cancel button to close
-        ::SendDlgItemMessage(m_dialogHandle, IDCANCEL, WM_SETTEXT, 0, (LPARAM)L"Close");
+        ::SendDlgItemMessage(m_dialogHandle, IDCANCEL, WM_SETTEXT, 0, reinterpret_cast<LPARAM>(L"Close"));
     }
 
     return 0;

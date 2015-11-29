@@ -1764,7 +1764,7 @@ HRESULT ImageEditorHandler::UpdateTaskbarThumbnail()
         if (SUCCEEDED(hr))
         {
             ThumbnailToobarButton backButton = {APPCOMMAND_BROWSER_BACKWARD, m_currentIndex > 0};
-            ThumbnailToobarButton nextButton = {APPCOMMAND_BROWSER_FORWARD, m_currentIndex < (int)m_images.size() - 1};
+            ThumbnailToobarButton nextButton = {APPCOMMAND_BROWSER_FORWARD, m_currentIndex < static_cast<int>(m_images.size()) - 1};
             hr = taskbar.EnableThumbnailToolbarButtons(backButton, nextButton);
         }
     }

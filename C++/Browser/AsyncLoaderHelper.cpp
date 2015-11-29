@@ -186,7 +186,7 @@ HRESULT AsyncLoaderHelper::Scroll(int scrollBy)
     CriticalSectionLocker l(m_criticalSection);
 
     m_pageStart += scrollBy;
-    return m_asyncLoaderLayoutManager->SetCurrentPage((int)m_pageStart);
+    return m_asyncLoaderLayoutManager->SetCurrentPage(static_cast<int>(m_pageStart));
 }
 
 //

@@ -64,10 +64,10 @@ std::wstring FlickrUploader::GetToken(const std::wstring& frob)
     {
         _FlickrRequest request = 
         {
-            (wchar_t*)(flickr_auth_getToken_method_name), 
+            const_cast<wchar_t*>(flickr_auth_getToken_method_name), 
             flickr_api_key, // api_key
             nullptr, // api_sig computed later
-            (wchar_t*)frob.c_str()
+            const_cast<wchar_t*>(frob.c_str())
         };
 
         std::wstring params = flickr_secret;
@@ -186,7 +186,7 @@ int FlickrUploader::SendWebRequest(const HINTERNET *request, const std::wstring&
     params += L"auth_token";
     params += token;
     std::wstring api_sig = CalculateMD5Hash(params);
-    int result = ::WinHttpAddRequestHeaders(*request, contentType, (unsigned long)-1, WINHTTP_ADDREQ_FLAG_ADD);
+    int result = ::WinHttpAddRequestHeaders(*request, contentType, static_cast<DWORD>(-1), WINHTTP_ADDREQ_FLAG_ADD);
     if (result)
     {
         std::wostringstream sb;
@@ -225,9 +225,9 @@ int FlickrUploader::SendWebRequest(const HINTERNET *request, const std::wstring&
             *request,
             WINHTTP_NO_ADDITIONAL_HEADERS,
             0,
-            (void*)str.c_str(),
-            static_cast<unsigned long>(str.length()),
-            static_cast<unsigned long>(str.length()),
+            const_cast<char*>(str.c_str()),
+            static_cast<DWORD>(str.length()),
+            static_cast<DWORD>(str.length()),
             0);
     }
     return result;
@@ -305,7 +305,7 @@ std::wstring FlickrUploader::ObtainFrob()
     {
         _FlickrRequest request = 
         {
-            (wchar_t*) flickr_auth_getFrob_method_name, 
+            const_cast<wchar_t*>(flickr_auth_getFrob_method_name), 
             flickr_api_key, // api_key
             nullptr, // api_sig computed later
             nullptr // frob is not needed
@@ -532,7 +532,7 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
     unsigned long hashObjectSize = 0;
     if (NT_SUCCESS(status))
     {
-        status = BCryptGetProperty(algorithm, BCRYPT_OBJECT_LENGTH, (unsigned char*)&hashObjectSize, sizeof(unsigned long), &dataSize, 0);
+        status = BCryptGetProperty(algorithm, BCRYPT_OBJECT_LENGTH, reinterpret_cast<unsigned char*>(&hashObjectSize), sizeof(unsigned long), &dataSize, 0);
     }
     // Allocate the hash object on the heap
     unsigned char* hashObject = nullptr;
@@ -548,7 +548,7 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
     unsigned long  hashSize = 0;
     if (NT_SUCCESS(status))
     {
-        status = BCryptGetProperty(algorithm, BCRYPT_HASH_LENGTH, (unsigned char*)&hashSize, sizeof(unsigned long), &dataSize, 0);
+        status = BCryptGetProperty(algorithm, BCRYPT_HASH_LENGTH, reinterpret_cast<unsigned char*>(&hashSize), sizeof(unsigned long), &dataSize, 0);
     }
     // Allocate the hash buffer on the heap
     unsigned char* hash = nullptr;
@@ -570,7 +570,7 @@ std::wstring FlickrUploader::CalculateMD5Hash(const std::wstring& buffer)
     // Hash data
     if (NT_SUCCESS(status))
     {
-        status = BCryptHashData(cryptHash, (unsigned char*)byteString.c_str(), static_cast<unsigned long>(byteString.length()), 0);
+        status = BCryptHashData(cryptHash, reinterpret_cast<unsigned char*>(const_cast<char*>(byteString.c_str())), static_cast<unsigned long>(byteString.length()), 0);
     }
     // Close the hash and get hash data
     if (NT_SUCCESS(status))

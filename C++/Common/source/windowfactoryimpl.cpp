@@ -35,7 +35,7 @@ ATOM WindowFactory::RegisterClass(HINSTANCE hInstance, const wchar_t* className)
     wcex.hIcon          = nullptr;
     wcex.hIconSm        = nullptr;
     wcex.hCursor        = nullptr; // If the class cursor is not null, the system restores the class cursor each time the mouse is moved.
-    wcex.hbrBackground  = (HBRUSH) (COLOR_WINDOW+1);
+    wcex.hbrBackground  = reinterpret_cast<HBRUSH>(COLOR_WINDOW+1);
     wcex.lpszMenuName   = nullptr;
     wcex.lpszClassName  = className;
 
@@ -136,7 +136,7 @@ LRESULT CALLBACK WindowFactory::WndProc(HWND hWnd, unsigned int message, WPARAM 
     // WM_CREATE message when a window is first created.
     if (message == WM_NCCREATE)
     {
-        LPCREATESTRUCT pcs = (LPCREATESTRUCT)lParam;
+        LPCREATESTRUCT pcs = reinterpret_cast<LPCREATESTRUCT>(lParam);
         window = reinterpret_cast<IWindow*>(pcs->lpCreateParams);
         window->SetWindowHandle(hWnd);
 

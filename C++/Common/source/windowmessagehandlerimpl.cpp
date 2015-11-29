@@ -280,7 +280,7 @@ HRESULT WindowMessageHandler::OnMessageReceived(
 
             GESTUREINFO info;
             info.cbSize = sizeof(info);
-            if (::GetGestureInfo((HGESTUREINFO)lParam, &info))
+            if (::GetGestureInfo(reinterpret_cast<HGESTUREINFO>(lParam), &info))
             {
                 switch(info.dwID)
                 {
@@ -334,7 +334,7 @@ HRESULT WindowMessageHandler::OnMessageReceived(
 
             if (handled)
             {
-                ::CloseGestureInfoHandle((HGESTUREINFO)lParam);
+                ::CloseGestureInfoHandle(reinterpret_cast<HGESTUREINFO>(lParam));
                 *result = 0;
             }
             else
