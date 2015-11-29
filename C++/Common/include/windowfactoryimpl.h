@@ -32,8 +32,8 @@ namespace Hilo
 
         public:
             // IWindowFactory implementation
-            HRESULT __stdcall Create(__in POINT location, __in SIZE size, __in_opt IWindow* parent, __out IWindow** window);
-            HRESULT __stdcall Create(__in POINT location, __in SIZE size, __in_opt IWindowMessageHandler* messageHandler, __in_opt IWindow* parent, __out IWindow** window);
+            HRESULT __stdcall Create(__in POINT location, __in SIZE size, __in_opt IWindow* parent, __out IWindow** window) override;
+            HRESULT __stdcall Create(__in POINT location, __in SIZE size, __in_opt IWindowMessageHandler* messageHandler, __in_opt IWindow* parent, __out IWindow** window) override;
 
         protected:
             static LRESULT CALLBACK WndProc(HWND hWnd, unsigned int message, WPARAM wParam, LPARAM lParam);

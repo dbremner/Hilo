@@ -14,8 +14,8 @@
 class OrbitAnimation : public IOrbitAnimation, public IInitializable
 {
 public:
-    HRESULT __stdcall GetEllipse(__out D2D1_ELLIPSE* ellipse, __out_opt double* opacity);
-    HRESULT __stdcall Setup(D2D1_ELLIPSE targetEllipse, double targetOpacity, double duration);
+    HRESULT __stdcall GetEllipse(__out D2D1_ELLIPSE* ellipse, __out_opt double* opacity) override;
+    HRESULT __stdcall Setup(D2D1_ELLIPSE targetEllipse, double targetOpacity, double duration) override;
 
 protected:
     // Constructor / Destructor
@@ -31,7 +31,7 @@ protected:
     }
 
     // IInitializable implementation
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Animation variables

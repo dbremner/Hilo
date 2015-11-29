@@ -14,8 +14,8 @@
 class PointAnimation : public IInitializable, public IPointAnimation
 {
 public:
-    HRESULT __stdcall GetCurrentPoint(__out D2D1_POINT_2F* point);
-    HRESULT __stdcall Setup(D2D1_POINT_2F targetPoint, double duration);
+    HRESULT __stdcall GetCurrentPoint(__out D2D1_POINT_2F* point) override;
+    HRESULT __stdcall Setup(D2D1_POINT_2F targetPoint, double duration) override;
 
 protected:
     // Constructor / destructor
@@ -29,7 +29,7 @@ protected:
             PointAnimation::QueryInterfaceHelper(iid, object);;
     }
 
-    HRESULT __stdcall Initialize();
+	virtual HRESULT __stdcall Initialize() override;
 
 private:
     // Initial point. Used during SharedObject<PointAnimation>::Create method

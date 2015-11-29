@@ -57,12 +57,12 @@ namespace Hilo
 
         public:
             // IAsyncLoaderItemCache
-            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* cs);
-            HRESULT __stdcall SetLoadableItem(IAsyncLoaderItem* loadableItem);
-            HRESULT __stdcall SetMemoryManager(IAsyncLoaderMemoryManager* memoryManager);
-            HRESULT __stdcall Load(LoadPage loadPage, LoadSize loadSize);
-            HRESULT __stdcall Unload(LoadSize loadSize);
-            HRESULT __stdcall Shutdown();
+            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* cs) override;
+            HRESULT __stdcall SetLoadableItem(IAsyncLoaderItem* loadableItem) override;
+            HRESULT __stdcall SetMemoryManager(IAsyncLoaderMemoryManager* memoryManager) override;
+            HRESULT __stdcall Load(LoadPage loadPage, LoadSize loadSize) override;
+            HRESULT __stdcall Unload(LoadSize loadSize) override;
+            HRESULT __stdcall Shutdown() override;
         };
     }
 }

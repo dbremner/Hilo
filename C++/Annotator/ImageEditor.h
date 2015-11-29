@@ -26,24 +26,24 @@ class ImageEditorHandler :
 {
 public:
     // IImageEditor
-    HRESULT __stdcall SetCurrentLocation(IShellItem* shellFolder, bool recursive);
-    HRESULT __stdcall SetCurrentLocationFromCommandLine();
-    HRESULT __stdcall SetDrawingOperation(__in ImageOperationType imageDrawingOperation);
-    HRESULT __stdcall GetDrawingOperation(__out ImageOperationType* imageDrawingOperation);
-    HRESULT __stdcall SetUIFramework(__in IUIFramework* framework);
-    HRESULT __stdcall UpdateUIFramework();
-    HRESULT __stdcall SetPenColor(__in D2D1_COLOR_F penColor);
-    HRESULT __stdcall SetPenSize(__in float penSize);
-    HRESULT __stdcall OpenFile();
-    HRESULT __stdcall SaveFiles();
-    HRESULT __stdcall SaveFileAs();
-    HRESULT __stdcall ZoomIn();
-    HRESULT __stdcall ZoomOut();
-    HRESULT __stdcall ZoomFull();
-    HRESULT __stdcall CanUndo(__out bool* canUndo);
-    HRESULT __stdcall CanRedo(__out bool* canRedo);
-    HRESULT __stdcall Undo();
-    HRESULT __stdcall Redo();
+    HRESULT __stdcall SetCurrentLocation(IShellItem* shellFolder, bool recursive) override;
+    HRESULT __stdcall SetCurrentLocationFromCommandLine() override;
+    HRESULT __stdcall SetDrawingOperation(__in ImageOperationType imageDrawingOperation) override;
+    HRESULT __stdcall GetDrawingOperation(__out ImageOperationType* imageDrawingOperation) override;
+    HRESULT __stdcall SetUIFramework(__in IUIFramework* framework) override;
+    HRESULT __stdcall UpdateUIFramework() override;
+    HRESULT __stdcall SetPenColor(__in D2D1_COLOR_F penColor) override;
+    HRESULT __stdcall SetPenSize(__in float penSize) override;
+    HRESULT __stdcall OpenFile() override;
+    HRESULT __stdcall SaveFiles() override;
+    HRESULT __stdcall SaveFileAs() override;
+    HRESULT __stdcall ZoomIn() override;
+    HRESULT __stdcall ZoomOut() override;
+    HRESULT __stdcall ZoomFull() override;
+    HRESULT __stdcall CanUndo(__out bool* canUndo) override;
+    HRESULT __stdcall CanRedo(__out bool* canRedo) override;
+    HRESULT __stdcall Undo() override;
+    HRESULT __stdcall Redo() override;
 
 protected:
     // Constructor/destructor
@@ -59,22 +59,22 @@ protected:
     }
 
     // Events
-    HRESULT OnAppCommandBrowserBackward();
-    HRESULT OnAppCommandBrowserForward();
+    HRESULT OnAppCommandBrowserBackward() override;
+    HRESULT OnAppCommandBrowserForward() override;
 
-    HRESULT OnCreate();
-    HRESULT OnEraseBackground();
-    HRESULT OnRender();
-    HRESULT OnSize(unsigned int width, unsigned int height);
+    HRESULT OnCreate() override;
+    HRESULT OnEraseBackground() override;
+    HRESULT OnRender() override;
+    HRESULT OnSize(unsigned int width, unsigned int height) override;
 
-    HRESULT OnKeyDown(unsigned int vKey);
-    HRESULT OnLeftMouseButtonDown(D2D1_POINT_2F mousePos);
-    HRESULT OnLeftMouseButtonUp(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys);
-    HRESULT OnMouseMove(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseEnter(D2D1_POINT_2F mousePosition);
+    HRESULT OnKeyDown(unsigned int vKey) override;
+    HRESULT OnLeftMouseButtonDown(D2D1_POINT_2F mousePos) override;
+    HRESULT OnLeftMouseButtonUp(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys) override;
+    HRESULT OnMouseMove(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseEnter(D2D1_POINT_2F mousePosition) override;
 
-    HRESULT OnCommand(WPARAM wParam, LPARAM /*lParam*/);
+    HRESULT OnCommand(WPARAM wParam, LPARAM /*lParam*/) override;
 private:
 #ifdef _MEASURE_FPS
     // timer calculations

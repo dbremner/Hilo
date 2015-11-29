@@ -18,7 +18,7 @@ public:
     static const D2D1_COLOR_F SelectionBorderColor;
 
     // Rendering method
-    HRESULT _stdcall Draw();
+    HRESULT _stdcall Draw() override;
 
 protected:
     // Constructor/destructor
@@ -31,7 +31,7 @@ protected:
             Thumbnail::QueryInterfaceHelper(iid, object);
     }
     
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Draw methods

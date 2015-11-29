@@ -142,20 +142,20 @@ private:
 
 protected:
     // Events
-    HRESULT OnRender();
-    HRESULT OnEraseBackground();
-    HRESULT OnSize(unsigned int width, unsigned int height);
-    HRESULT OnKeyDown(unsigned int vKey);
-    HRESULT OnLeftMouseButtonDown(D2D1_POINT_2F mousePos);
-    HRESULT OnLeftMouseButtonUp(D2D1_POINT_2F mousePosition);
-    HRESULT OnLeftMouseButtonDoubleClick(D2D1_POINT_2F mousePos);
-    HRESULT OnMouseMove(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseEnter(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys);
-    HRESULT OnAppCommandBrowserBackward();
-    HRESULT OnAppCommandBrowserForward();
-    HRESULT OnPan(D2D1_POINT_2F location, unsigned long flags);
-    HRESULT OnZoom(float zoomFactor);
+    HRESULT OnRender() override;
+    HRESULT OnEraseBackground() override;
+    HRESULT OnSize(unsigned int width, unsigned int height) override;
+    HRESULT OnKeyDown(unsigned int vKey) override;
+    HRESULT OnLeftMouseButtonDown(D2D1_POINT_2F mousePos) override;
+    HRESULT OnLeftMouseButtonUp(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnLeftMouseButtonDoubleClick(D2D1_POINT_2F mousePos) override;
+    HRESULT OnMouseMove(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseEnter(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys) override;
+    HRESULT OnAppCommandBrowserBackward() override;
+    HRESULT OnAppCommandBrowserForward() override;
+    HRESULT OnPan(D2D1_POINT_2F location, unsigned long flags) override;
+    HRESULT OnZoom(float zoomFactor) override;
 
     MediaPaneMessageHandler();
     virtual ~MediaPaneMessageHandler();
@@ -171,29 +171,29 @@ protected:
             Hilo::WindowApiHelpers::WindowMessageHandler::QueryInterfaceHelper(iid, object);
     }
 
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 public:
     // Constants
     static const int BackgroundColor = 0xB8BEFC;
 
     // IPane
-    HRESULT __stdcall SetCurrentLocation(IShellItem* shellFolder, bool recursive);
+    HRESULT __stdcall SetCurrentLocation(IShellItem* shellFolder, bool recursive) override;
 
     // IMediaPane implemenation
-    HRESULT __stdcall LaunchAnnotator();
-    HRESULT __stdcall ShareImages();
+    HRESULT __stdcall LaunchAnnotator() override;
+    HRESULT __stdcall ShareImages() override;
 
     // IWindowLayoutChild
-    HRESULT __stdcall SetWindowLayout(IWindowLayout* layout)
+    HRESULT __stdcall SetWindowLayout(IWindowLayout* layout) override
     {
         m_windowLayout = layout;
         return S_OK;
     }
-    HRESULT __stdcall Finalize();
+    HRESULT __stdcall Finalize() override;
 
     // IChildNotificationHandler
-    HRESULT __stdcall OnChildChanged() ;
+    HRESULT __stdcall OnChildChanged() override;
 
     // IAsyncLoaderMemoryManagerClient
-    HRESULT __stdcall GetClientItemSize(unsigned int* clientItemSize);
+    HRESULT __stdcall GetClientItemSize(unsigned int* clientItemSize) override;
 };

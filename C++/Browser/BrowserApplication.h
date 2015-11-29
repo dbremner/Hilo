@@ -27,15 +27,15 @@ protected:
     ComPtr<IWindowLayout> m_WindowLayout;
 
     // Messages
-    HRESULT OnSize(unsigned int /*width*/, unsigned int /*height*/);
-    HRESULT OnKeyDown(unsigned int vKey);
-    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys);
-    HRESULT OnDestroy();
+    HRESULT OnSize(unsigned int /*width*/, unsigned int /*height*/) override;
+    HRESULT OnKeyDown(unsigned int vKey) override;
+    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys) override;
+    HRESULT OnDestroy() override;
 
     BrowserApplication();
     ~BrowserApplication();
 
 public:
 
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 };

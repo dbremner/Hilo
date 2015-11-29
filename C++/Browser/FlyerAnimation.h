@@ -43,12 +43,12 @@ protected:
     FlyerAnimation();
     virtual ~FlyerAnimation();
 
-    HRESULT BuildStoryboard();
-    HRESULT CreateAnimatedThumbnailCells(const std::vector<ThumbnailCell>& prevThumbnailCells, const std::vector<ThumbnailCell>& currentThumbnailCells, D2D1_SIZE_F viewSize);
+    HRESULT BuildStoryboard() override;
+    HRESULT CreateAnimatedThumbnailCells(const std::vector<ThumbnailCell>& prevThumbnailCells, const std::vector<ThumbnailCell>& currentThumbnailCells, D2D1_SIZE_F viewSize) override;
 
 public:
     // Implementation
-    HRESULT __stdcall GetAnimatedThumbnailCells(std::vector<AnimatedThumbnailCell>& animatedCells);
-    HRESULT __stdcall GetAnimationPosition(__in IThumbnail* const control, __out D2D1_POINT_2F* position);
+    HRESULT __stdcall GetAnimatedThumbnailCells(std::vector<AnimatedThumbnailCell>& animatedCells) override;
+    HRESULT __stdcall GetAnimationPosition(__in IThumbnail* const control, __out D2D1_POINT_2F* position) override;
 };
 

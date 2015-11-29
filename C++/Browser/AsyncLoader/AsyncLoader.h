@@ -102,35 +102,35 @@ namespace Hilo
                     CastHelper<IInitializable>::CastTo(iid, this, object);
             }
 
-            HRESULT __stdcall Initialize();
+            HRESULT __stdcall Initialize() override;
 
         public:
             // IAsyncLoader
 
             // Synchronication...
-            HRESULT __stdcall GetCriticalSection(CRITICAL_SECTION** cs);
+            HRESULT __stdcall GetCriticalSection(CRITICAL_SECTION** cs) override;
 
             // Item list...
-            HRESULT __stdcall GetItemsList(IAsyncLoaderItemList** itemList);
+            HRESULT __stdcall GetItemsList(IAsyncLoaderItemList** itemList) override;
 
             // Page layout manager ...
-            HRESULT __stdcall GetItemLayoutManager(IAsyncLoaderLayoutManager** layoutManager);
+            HRESULT __stdcall GetItemLayoutManager(IAsyncLoaderLayoutManager** layoutManager) override;
 
             // Memory manager...
-            HRESULT __stdcall GetMemoryManager(IAsyncLoaderMemoryManager** memoryManager);
+            HRESULT __stdcall GetMemoryManager(IAsyncLoaderMemoryManager** memoryManager) override;
 
             // Thread control...
-            HRESULT __stdcall StartWorkerThread();
-            HRESULT __stdcall IsWorkingThreadActive(bool* active);
-            HRESULT __stdcall PauseWorkerThread();
-            HRESULT __stdcall ResumeWorkerThread();
-            HRESULT __stdcall EndWorkerThread();
+            HRESULT __stdcall StartWorkerThread() override;
+            HRESULT __stdcall IsWorkingThreadActive(bool* active) override;
+            HRESULT __stdcall PauseWorkerThread() override;
+            HRESULT __stdcall ResumeWorkerThread() override;
+            HRESULT __stdcall EndWorkerThread() override;
 
             // Life-time management...
-            HRESULT __stdcall Shutdown();
+            HRESULT __stdcall Shutdown() override;
 
             // IAsyncLoaderLayoutManagerClient
-            HRESULT __stdcall LayoutChanged();
+            HRESULT __stdcall LayoutChanged() override;
         };
     }
 }

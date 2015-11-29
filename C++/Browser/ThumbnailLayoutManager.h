@@ -24,28 +24,28 @@ public:
     static const float YSelectionBoxDeltaRatio;
 
     // Getters and setters
-    HRESULT __stdcall GetPanState(__out int *panState);
-    HRESULT __stdcall GetThumbnailSize(__out float *thumbnailSize);
-    HRESULT __stdcall GetVisibleThumbnailRange(__out int *rangeStart, __out int *rangeEnd);
-    HRESULT __stdcall SetArrowGutterSize(__in float arrowGutterSize);
-    HRESULT __stdcall SetCurrentImage(__in unsigned int currentImageIndex);
-    HRESULT __stdcall SetRenderTargetSize(__in D2D1_SIZE_F renderTargetSize);
-    HRESULT __stdcall SetTextBoxHeight(__in float textBoxHeight);
-    HRESULT __stdcall SetSlideShowMode(__in bool isSlideShow);
+    HRESULT __stdcall GetPanState(__out int *panState) override;
+    HRESULT __stdcall GetThumbnailSize(__out float *thumbnailSize) override;
+    HRESULT __stdcall GetVisibleThumbnailRange(__out int *rangeStart, __out int *rangeEnd) override;
+    HRESULT __stdcall SetArrowGutterSize(__in float arrowGutterSize) override;
+    HRESULT __stdcall SetCurrentImage(__in unsigned int currentImageIndex) override;
+    HRESULT __stdcall SetRenderTargetSize(__in D2D1_SIZE_F renderTargetSize) override;
+    HRESULT __stdcall SetTextBoxHeight(__in float textBoxHeight) override;
+    HRESULT __stdcall SetSlideShowMode(__in bool isSlideShow) override;
 
     // Slideshow helper
-    HRESULT __stdcall BeginSlideShowPan();
-    HRESULT __stdcall EndSlideShowPan(__out float *distance);
+    HRESULT __stdcall BeginSlideShowPan() override;
+    HRESULT __stdcall EndSlideShowPan(__out float *distance) override;
 
     // Implementation
-    HRESULT __stdcall CreateLayout(__in const int imageCount, __in const bool resetPanPosition);
+    HRESULT __stdcall CreateLayout(__in const int imageCount, __in const bool resetPanPosition) override;
 
     // Rendering methods
-    HRESULT __stdcall UpdateVisibleThumbnailControls(__in const std::vector<ComPtr<IThumbnail>> &cells);
+    HRESULT __stdcall UpdateVisibleThumbnailControls(__in const std::vector<ComPtr<IThumbnail>> &cells) override;
 
     // Pan and zoom
-    HRESULT __stdcall Pan(__in float offset);
-    HRESULT __stdcall Zoom (__in float factor);
+    HRESULT __stdcall Pan(__in float offset) override;
+    HRESULT __stdcall Zoom (__in float factor) override;
 
 protected:
     // Constructor / Destructor

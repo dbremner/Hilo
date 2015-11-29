@@ -15,8 +15,8 @@
 class PanAnimation : public IInitializable, public IPanAnimation
 {
 public:
-    HRESULT __stdcall GetValue(__out double *currentPosition);
-    HRESULT __stdcall Setup(__in const double startPosition, __in const double endPosition, __in const double duration);
+    HRESULT __stdcall GetValue(__out double *currentPosition) override;
+    HRESULT __stdcall Setup(__in const double startPosition, __in const double endPosition, __in const double duration) override;
 
 protected:
     // Constructor/Destructor
@@ -31,7 +31,7 @@ protected:
     }
 
     // IInitializable implementation
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Animation variables

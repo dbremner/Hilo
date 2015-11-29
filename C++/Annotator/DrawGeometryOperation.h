@@ -26,8 +26,9 @@ class DrawGeometryOperation : public IImageOperation, public IDrawGeometryOperat
 {
 public:
     // IDrawGeometryOperation methods
-    HRESULT __stdcall DrawToRenderTarget(__in ID2D1RenderTarget* renderTarget, D2D1_RECT_F imageRect);
-    HRESULT __stdcall DiscardResources()
+	virtual HRESULT __stdcall DrawToRenderTarget(__in ID2D1RenderTarget* renderTarget, D2D1_RECT_F imageRect) override;
+
+	virtual HRESULT __stdcall DiscardResources() override
     {
         if (m_brush)
         {
@@ -49,9 +50,9 @@ protected:
     }
 
     // IGeometryShape
-    HRESULT __stdcall AppendPoint(__in ID2D1RenderTarget* renderTarget, __in D2D1_POINT_2F point);
-    HRESULT __stdcall SetBrushColor(__in D2D1_COLOR_F brushColor);
-    HRESULT __stdcall SetStrokeSize(__in float strokeSize);
+	virtual HRESULT __stdcall AppendPoint(__in ID2D1RenderTarget* renderTarget, __in D2D1_POINT_2F point) override;
+	virtual HRESULT __stdcall SetBrushColor(__in D2D1_COLOR_F brushColor) override;
+	virtual HRESULT __stdcall SetStrokeSize(__in float strokeSize) override;
 
 private:
     ComPtr<ID2D1StrokeStyle> m_strokeStyle;

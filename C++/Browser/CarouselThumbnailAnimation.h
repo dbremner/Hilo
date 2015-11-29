@@ -15,11 +15,11 @@ class CarouselThumbnailAnimation : public ICarouselThumbnailAnimation, public II
 {
 public:
     // Getters
-    HRESULT __stdcall GetInfo(D2D1_POINT_2F* point, double* opacity);
+    HRESULT __stdcall GetInfo(D2D1_POINT_2F* point, double* opacity) override;
 
     // Methods
-    HRESULT __stdcall Setup(D2D1_POINT_2F targetPoint, double targetOpacity, double duration = 0);
-    HRESULT __stdcall Setup(D2D1_POINT_2F keyFramePoint, D2D1_POINT_2F targetPoint, double duration = 0);
+    HRESULT __stdcall Setup(D2D1_POINT_2F targetPoint, double targetOpacity, double duration = 0) override;
+    HRESULT __stdcall Setup(D2D1_POINT_2F keyFramePoint, D2D1_POINT_2F targetPoint, double duration = 0) override;
 
 protected:
     // Constructor / Destructor
@@ -35,7 +35,7 @@ protected:
     }
 
     // IInitializable implementation
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Animation variables

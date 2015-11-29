@@ -22,11 +22,11 @@ class UICommandHandler :  public IUICommandHandler, public IImageEditorCommandHa
 {
 public:
     // IUICommandHandler methods
-    HRESULT __stdcall UpdateProperty(unsigned int commandId, __in REFPROPERTYKEY key, __in_opt const PROPVARIANT* currentValue, __out PROPVARIANT* newValue);
-    HRESULT __stdcall Execute (unsigned int commandId, UI_EXECUTIONVERB verb, __in_opt const PROPERTYKEY* key, __in_opt const PROPVARIANT* value, __in_opt IUISimplePropertySet* commandExecutionProperties);
+    HRESULT __stdcall UpdateProperty(unsigned int commandId, __in REFPROPERTYKEY key, __in_opt const PROPVARIANT* currentValue, __out PROPVARIANT* newValue) override;
+    HRESULT __stdcall Execute (unsigned int commandId, UI_EXECUTIONVERB verb, __in_opt const PROPERTYKEY* key, __in_opt const PROPVARIANT* value, __in_opt IUISimplePropertySet* commandExecutionProperties) override;
 
     // IImageEditorCommandHandler methods
-    HRESULT __stdcall SetImageEditor(__in IImageEditor* imageEditor);
+    HRESULT __stdcall SetImageEditor(__in IImageEditor* imageEditor) override;
     HRESULT __stdcall SetUIFramework(__in IUIFramework* framework);
 
 protected:

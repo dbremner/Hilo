@@ -37,8 +37,8 @@ namespace Hilo
 
         public:
             // IMemorySizeConverter
-            HRESULT __stdcall MemorySizeToClientItemSize(unsigned int memorySize, unsigned int* clientItemSize);
-            HRESULT __stdcall ClientItemSizeToMemorySize(unsigned int clientItemSize, unsigned int* memorySize);
+            HRESULT __stdcall MemorySizeToClientItemSize(unsigned int memorySize, unsigned int* clientItemSize) override;
+            HRESULT __stdcall ClientItemSizeToMemorySize(unsigned int clientItemSize, unsigned int* memorySize) override;
         };
     }
 }

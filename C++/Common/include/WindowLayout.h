@@ -22,20 +22,20 @@ class WindowLayout : public IWindowLayout
 {
 public:
     // Getters and setters
-    HRESULT __stdcall SetMainWindow(__in_opt IWindow* mainWindow);
-    HRESULT __stdcall GetMainWindow(__out IWindow** mainWindow);
+    HRESULT __stdcall SetMainWindow(__in_opt IWindow* mainWindow) override;
+    HRESULT __stdcall GetMainWindow(__out IWindow** mainWindow) override;
 
-    HRESULT __stdcall InsertChildWindow(IWindow* childWindow, __out unsigned int* index);
-    HRESULT __stdcall GetChildWindowCount(__out unsigned int* count);
-    HRESULT __stdcall GetChildWindow(__in unsigned int index, __out IWindow** childWindow);
+    HRESULT __stdcall InsertChildWindow(IWindow* childWindow, __out unsigned int* index) override;
+    HRESULT __stdcall GetChildWindowCount(__out unsigned int* count) override;
+    HRESULT __stdcall GetChildWindow(__in unsigned int index, __out IWindow** childWindow) override;
 
-    HRESULT __stdcall GetChildWindowLayoutHeight(__in unsigned int index, __out unsigned int* height);
-    HRESULT __stdcall SetChildWindowLayoutHeight(__in unsigned int index, __in unsigned int height);
+    HRESULT __stdcall GetChildWindowLayoutHeight(__in unsigned int index, __out unsigned int* height) override;
+    HRESULT __stdcall SetChildWindowLayoutHeight(__in unsigned int index, __in unsigned int height) override;
 
     // Methods
-    HRESULT __stdcall SwitchDisplayMode(__in bool mode);
-    HRESULT __stdcall UpdateLayout();
-    HRESULT __stdcall Finalize();
+    HRESULT __stdcall SwitchDisplayMode(__in bool mode) override;
+    HRESULT __stdcall UpdateLayout() override;
+    HRESULT __stdcall Finalize() override;
 
 protected:
     // Constructor

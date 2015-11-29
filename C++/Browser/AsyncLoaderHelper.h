@@ -56,25 +56,25 @@ namespace Hilo
             }
 
             // IInitializable
-            HRESULT __stdcall Initialize();
+            HRESULT __stdcall Initialize() override;
 
         public:
             // IAsyncLoaderHelper
-            HRESULT __stdcall StartBackgroundLoading();
-            HRESULT __stdcall PauseBackgroundLoading();
-            HRESULT __stdcall ResumeBackgroundLoading();
-            HRESULT __stdcall Shutdown();
+            HRESULT __stdcall StartBackgroundLoading() override;
+            HRESULT __stdcall PauseBackgroundLoading() override;
+            HRESULT __stdcall ResumeBackgroundLoading() override;
+            HRESULT __stdcall Shutdown() override;
 
-            HRESULT __stdcall GetAsyncLoader(IAsyncLoader** _p);
+            HRESULT __stdcall GetAsyncLoader(IAsyncLoader** _p) override;
 
-            HRESULT __stdcall SetPageItemCount(unsigned int count);
-            HRESULT __stdcall SetCurrentPagePivot(unsigned int pivot);
-            HRESULT __stdcall Scroll(int scrollBy);
-            HRESULT __stdcall Zoom(float factor);
+            HRESULT __stdcall SetPageItemCount(unsigned int count) override;
+            HRESULT __stdcall SetCurrentPagePivot(unsigned int pivot) override;
+            HRESULT __stdcall Scroll(int scrollBy) override;
+            HRESULT __stdcall Zoom(float factor) override;
 
-            HRESULT __stdcall ConnectClient(IAsyncLoaderMemoryManagerClient* client);
-            HRESULT __stdcall ConnectItem(IUnknown* newItem, int location);
-            HRESULT __stdcall ClearItems();
+            HRESULT __stdcall ConnectClient(IAsyncLoaderMemoryManagerClient* client) override;
+            HRESULT __stdcall ConnectItem(IUnknown* newItem, int location) override;
+            HRESULT __stdcall ClearItems() override;
         };
     }
 }

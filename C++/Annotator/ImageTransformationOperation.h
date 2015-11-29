@@ -22,9 +22,9 @@ class ImageTransformationOperation : public IImageOperation, public IImageTransf
 {
 public:
     // IImageTransformationOperation methods
-    HRESULT __stdcall GetTransformationMatrix(__in D2D1_POINT_2F point, __out D2D1_MATRIX_3X2_F* transform);
-    HRESULT __stdcall GetInverseTransformationMatrix(__in D2D1_POINT_2F point, __out D2D1_MATRIX_3X2_F* transform);
-    HRESULT __stdcall GetTransformationType(__out ImageOperationType* transformationType);
+    HRESULT __stdcall GetTransformationMatrix(__in D2D1_POINT_2F point, __out D2D1_MATRIX_3X2_F* transform) override;
+    HRESULT __stdcall GetInverseTransformationMatrix(__in D2D1_POINT_2F point, __out D2D1_MATRIX_3X2_F* transform) override;
+    HRESULT __stdcall GetTransformationType(__out ImageOperationType* transformationType) override;
 
 protected:
     ImageTransformationOperation(ImageOperationType);

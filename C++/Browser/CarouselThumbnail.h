@@ -19,7 +19,7 @@ class CarouselThumbnail : public IInitializable, public Thumbnail
 {
 public:
     // Methods
-    HRESULT __stdcall Draw();
+    HRESULT __stdcall Draw() override;
 
 protected:
     // Constructor/Destructor
@@ -32,7 +32,7 @@ protected:
             Thumbnail::QueryInterfaceHelper(iid, object);
     }
     
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Methods

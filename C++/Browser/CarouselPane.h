@@ -54,20 +54,20 @@ public:
     static const float KeyRotateSize;
 
     // IPane implementation
-    HRESULT __stdcall SetCurrentLocation(IShellItem* shellFolder, bool recursive);
+    HRESULT __stdcall SetCurrentLocation(IShellItem* shellFolder, bool recursive) override;
 
     // IWindowLayoutChild implementation
-    HRESULT __stdcall SetWindowLayout(IWindowLayout* layout);
-    HRESULT __stdcall Finalize();
+    HRESULT __stdcall SetWindowLayout(IWindowLayout* layout) override;
+    HRESULT __stdcall Finalize() override;
 
     // ICarouselPane implementation
-    HRESULT __stdcall SetMediaPane(IPane* mediaPane);
+    HRESULT __stdcall SetMediaPane(IPane* mediaPane) override;
 
     // IChildNotificationHandler
-    HRESULT __stdcall OnChildChanged();
+    HRESULT __stdcall OnChildChanged() override;
 
     // IAsyncLoaderMemoryManagerClient
-    HRESULT __stdcall GetClientItemSize(unsigned int* clientItemSize);
+    HRESULT __stdcall GetClientItemSize(unsigned int* clientItemSize) override;
 
 protected:
     // Contructors/Destructor
@@ -87,19 +87,19 @@ protected:
     }
 
     // IInitiliazable
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
     // WindowMessageHandler Events
-    HRESULT OnCreate();
-    HRESULT OnEraseBackground();
-    HRESULT OnRender();
-    HRESULT OnSize(unsigned int width, unsigned int height);
-    HRESULT OnLeftMouseButtonDown(D2D1_POINT_2F mousePosition);
-    HRESULT OnLeftMouseButtonUp(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseMove(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseEnter(D2D1_POINT_2F mousePosition);
-    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys);
-    HRESULT OnKeyDown(unsigned int vKey);
+    HRESULT OnCreate() override;
+    HRESULT OnEraseBackground() override;
+    HRESULT OnRender() override;
+    HRESULT OnSize(unsigned int width, unsigned int height) override;
+    HRESULT OnLeftMouseButtonDown(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnLeftMouseButtonUp(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseMove(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseEnter(D2D1_POINT_2F mousePosition) override;
+    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys) override;
+    HRESULT OnKeyDown(unsigned int vKey) override;
 
 private:
 #ifdef _MEASURE_FPS

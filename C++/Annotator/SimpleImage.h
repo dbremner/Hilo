@@ -18,31 +18,31 @@ class SimpleImage : public IImage
 {
 public:
     // Getters and setters
-    HRESULT __stdcall GetDrawingRect(__out D2D1_RECT_F* rect);
-    HRESULT __stdcall SetDrawingRect(__in const D2D1_RECT_F& rect);
-    HRESULT __stdcall GetTransformedRect(D2D1_POINT_2F midPoint, __out D2D1_RECT_F* rect);
-    HRESULT __stdcall GetImageInfo(__out ImageInfo* info);
-    HRESULT __stdcall SetBoundingRect(__in const D2D1_RECT_F& rect);
-    HRESULT __stdcall SetRenderingParameters(__in const RenderingParameters& drawingObjects);
-    HRESULT __stdcall ContainsPoint(__in D2D1_POINT_2F point, __out bool* doesImageContainPoint);
-    HRESULT __stdcall TranslateToAbsolutePoint(__in D2D1_POINT_2F point, __out D2D1_POINT_2F *translatedPoint);
-    HRESULT __stdcall GetScale(__out float* scale);
-    HRESULT __stdcall GetClipRect(__out D2D1_RECT_F* rect);
+    HRESULT __stdcall GetDrawingRect(__out D2D1_RECT_F* rect) override;
+    HRESULT __stdcall SetDrawingRect(__in const D2D1_RECT_F& rect) override;
+    HRESULT __stdcall GetTransformedRect(D2D1_POINT_2F midPoint, __out D2D1_RECT_F* rect) override;
+    HRESULT __stdcall GetImageInfo(__out ImageInfo* info) override;
+    HRESULT __stdcall SetBoundingRect(__in const D2D1_RECT_F& rect) override;
+    HRESULT __stdcall SetRenderingParameters(__in const RenderingParameters& drawingObjects) override;
+    HRESULT __stdcall ContainsPoint(__in D2D1_POINT_2F point, __out bool* doesImageContainPoint) override;
+    HRESULT __stdcall TranslateToAbsolutePoint(__in D2D1_POINT_2F point, __out D2D1_POINT_2F *translatedPoint) override;
+    HRESULT __stdcall GetScale(__out float* scale) override;
+    HRESULT __stdcall GetClipRect(__out D2D1_RECT_F* rect) override;
 
     // Rendering method
-    HRESULT __stdcall Draw();
-    HRESULT __stdcall Load();
-    HRESULT __stdcall Save(__in IShellItem *saveAsItem = nullptr);
+    HRESULT __stdcall Draw() override;
+    HRESULT __stdcall Load() override;
+    HRESULT __stdcall Save(__in IShellItem *saveAsItem = nullptr) override;
 
     // Resource management
-    HRESULT __stdcall DiscardResources();
+    HRESULT __stdcall DiscardResources() override;
 
     // Image operations
-    HRESULT __stdcall PushImageOperation(__in IImageOperation* imageOperation);
-    HRESULT __stdcall CanUndo(__out bool* canUndo);
-    HRESULT __stdcall CanRedo(__out bool* canRedo);
-    HRESULT __stdcall UndoImageOperation();
-    HRESULT __stdcall RedoImageOperation();
+    HRESULT __stdcall PushImageOperation(__in IImageOperation* imageOperation) override;
+    HRESULT __stdcall CanUndo(__out bool* canUndo) override;
+    HRESULT __stdcall CanRedo(__out bool* canRedo) override;
+    HRESULT __stdcall UndoImageOperation() override;
+    HRESULT __stdcall RedoImageOperation() override;
 
 protected:
     // Constructor/destructor

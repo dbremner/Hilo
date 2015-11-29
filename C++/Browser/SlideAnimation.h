@@ -23,6 +23,6 @@ protected:
     SlideAnimation();
     virtual ~SlideAnimation();
 
-    HRESULT BuildStoryboard();
-    HRESULT CreateAnimatedThumbnailCells(const std::vector<ThumbnailCell>& prevThumbnailCells, const std::vector<ThumbnailCell>& currentThumbnailCells, D2D1_SIZE_F viewSize);
+    HRESULT BuildStoryboard() override;
+    HRESULT CreateAnimatedThumbnailCells(const std::vector<ThumbnailCell>& prevThumbnailCells, const std::vector<ThumbnailCell>& currentThumbnailCells, D2D1_SIZE_F viewSize) override;
 };

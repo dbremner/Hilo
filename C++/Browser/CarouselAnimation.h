@@ -15,12 +15,12 @@ class CarouselAnimation : public ICarouselAnimation, public IInitializable
 {
 public:
     // Getters
-    HRESULT __stdcall GetInfo(double* rotation, double* thumbnailScale, double* thumbnailOpacity);
+    HRESULT __stdcall GetInfo(double* rotation, double* thumbnailScale, double* thumbnailOpacity) override;
 
     // Methods
-    HRESULT __stdcall SetupRotation(double targetRotation, double duration);
-    HRESULT __stdcall SetupScale(double targetScale, double duration);
-    HRESULT __stdcall SetupOpacity(double targetOpacity, double duration);
+    HRESULT __stdcall SetupRotation(double targetRotation, double duration) override;
+    HRESULT __stdcall SetupScale(double targetScale, double duration) override;
+    HRESULT __stdcall SetupOpacity(double targetOpacity, double duration) override;
 
 protected:
     // Constructor / Destructor
@@ -35,7 +35,7 @@ protected:
     }
 
     // IInitializable implementation
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Animation objects

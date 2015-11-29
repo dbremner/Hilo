@@ -85,17 +85,17 @@ namespace Hilo
 
          public:
            // IAsyncLoaderLayoutManager
-            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* cs);
-            HRESULT __stdcall SetBoundaries(int start, int end);
-            HRESULT __stdcall SetCurrentPageItemCount(unsigned int count);
-            HRESULT __stdcall SetCurrentPage(int start);
-            HRESULT __stdcall SetNextPagePercentage(unsigned int percentage);
-            HRESULT __stdcall SetPreviousPagePercentage(unsigned int percentage);
-            HRESULT __stdcall SetSecondarySizePercentage(unsigned int percentage);
-            HRESULT __stdcall RegisterClient(IAsyncLoaderLayoutManagerClient* client);
-            HRESULT __stdcall IsInPage(int location, LoadPage loadPage, LoadSize loadSize, bool* inPage);
-            HRESULT __stdcall GetPageItemCount(LoadPage loadPage, LoadSize loadSize, unsigned int* count);
-            HRESULT __stdcall Shutdown();
+            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* cs) override;
+            HRESULT __stdcall SetBoundaries(int start, int end) override;
+            HRESULT __stdcall SetCurrentPageItemCount(unsigned int count) override;
+            HRESULT __stdcall SetCurrentPage(int start) override;
+            HRESULT __stdcall SetNextPagePercentage(unsigned int percentage) override;
+            HRESULT __stdcall SetPreviousPagePercentage(unsigned int percentage) override;
+            HRESULT __stdcall SetSecondarySizePercentage(unsigned int percentage) override;
+            HRESULT __stdcall RegisterClient(IAsyncLoaderLayoutManagerClient* client) override;
+            HRESULT __stdcall IsInPage(int location, LoadPage loadPage, LoadSize loadSize, bool* inPage) override;
+            HRESULT __stdcall GetPageItemCount(LoadPage loadPage, LoadSize loadSize, unsigned int* count) override;
+            HRESULT __stdcall Shutdown() override;
         };
     }
 }

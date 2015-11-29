@@ -56,16 +56,16 @@ namespace Hilo
 
         public:
             // IAsyncLoaderItemList
-            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* _cs);
-            HRESULT __stdcall SetLayoutManager(IAsyncLoaderLayoutManager* layoutManager);
-            HRESULT __stdcall Add(IAsyncLoaderItem* _p);
-            HRESULT __stdcall GetCount(unsigned int* count);
-            HRESULT __stdcall ResetOnAdd(bool reset);
-            HRESULT __stdcall ResetEnumeration();
-            HRESULT __stdcall EnumerateNextItem(IAsyncLoaderItem** item, unsigned int* pass);
-            HRESULT __stdcall SetPassCount(unsigned int i);
-            HRESULT __stdcall Clear();
-            HRESULT __stdcall Shutdown();
+            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* _cs) override;
+            HRESULT __stdcall SetLayoutManager(IAsyncLoaderLayoutManager* layoutManager) override;
+            HRESULT __stdcall Add(IAsyncLoaderItem* _p) override;
+            HRESULT __stdcall GetCount(unsigned int* count) override;
+            HRESULT __stdcall ResetOnAdd(bool reset) override;
+            HRESULT __stdcall ResetEnumeration() override;
+            HRESULT __stdcall EnumerateNextItem(IAsyncLoaderItem** item, unsigned int* pass) override;
+            HRESULT __stdcall SetPassCount(unsigned int i) override;
+            HRESULT __stdcall Clear() override;
+            HRESULT __stdcall Shutdown() override;
         };
     }
 }

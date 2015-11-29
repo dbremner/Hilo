@@ -20,11 +20,11 @@ class PropertySet : public IUISimplePropertySet,
 {
 public:
     // Implementation for IPropertySet
-    HRESULT __stdcall InitializeCommandProperties(__in int categoryId, __in int commandId, __in UI_COMMANDTYPE commandType);
-    HRESULT __stdcall InitializeItemProperties(__in IUIImage* image, __in const std::wstring& label, int categoryId);
+    HRESULT __stdcall InitializeCommandProperties(__in int categoryId, __in int commandId, __in UI_COMMANDTYPE commandType) override;
+    HRESULT __stdcall InitializeItemProperties(__in IUIImage* image, __in const std::wstring& label, int categoryId) override;
 
     // Required method that enables property key values to be retrieved on gallery collection items
-    HRESULT __stdcall GetValue(__in REFPROPERTYKEY key, __out PROPVARIANT *propertyValue);
+    HRESULT __stdcall GetValue(__in REFPROPERTYKEY key, __out PROPVARIANT *propertyValue) override;
 
 protected:
     // Constructor/destructor

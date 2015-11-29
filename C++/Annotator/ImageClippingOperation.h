@@ -25,10 +25,10 @@ class ImageClippingOperation : public IImageOperation, public IImageClippingOper
 {
 public:
     // IImageClippingOperation
-    HRESULT _stdcall GetClippingRect(__out D2D1_RECT_F* clippingRect);
-    HRESULT _stdcall SetClippingRect(__in const D2D1_RECT_F& clippingRect);
-    HRESULT _stdcall GetDrawingRect(__out D2D1_RECT_F* clippingRect);
-    HRESULT _stdcall SetDrawingRect(__in const D2D1_RECT_F& clippingRect);
+	virtual HRESULT _stdcall GetClippingRect(__out D2D1_RECT_F* clippingRect) override;
+	virtual HRESULT _stdcall SetClippingRect(__in const D2D1_RECT_F& clippingRect) override;
+	virtual HRESULT _stdcall GetDrawingRect(__out D2D1_RECT_F* clippingRect) override;
+	virtual HRESULT _stdcall SetDrawingRect(__in const D2D1_RECT_F& clippingRect) override;
 
 protected:
     ImageClippingOperation(const D2D1_RECT_F& clippingRect);

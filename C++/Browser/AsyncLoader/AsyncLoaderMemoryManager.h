@@ -130,35 +130,35 @@ namespace Hilo
         public:
 
             // IAsyncLoaderMemoryManager
-            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* cs);
+            HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* cs) override;
 
             // Configuration
-            HRESULT __stdcall SetStepRatio(float stepRatio);
+            HRESULT __stdcall SetStepRatio(float stepRatio) override;
 
-            HRESULT __stdcall SetPrimaryStepUpCount(unsigned int count);
-            HRESULT __stdcall SetPrimaryStepDownCount(unsigned int count);
+            HRESULT __stdcall SetPrimaryStepUpCount(unsigned int count) override;
+            HRESULT __stdcall SetPrimaryStepDownCount(unsigned int count) override;
 
-            HRESULT __stdcall SetSecondaryStepUpCountStart(unsigned int count);
-            HRESULT __stdcall SetSecondaryStepUpCountEnd(unsigned int count);
-            HRESULT __stdcall SetSecondaryStepDownCountStart(unsigned int count);
-            HRESULT __stdcall SetSecondaryStepDownCountEnd(unsigned int count);
+            HRESULT __stdcall SetSecondaryStepUpCountStart(unsigned int count) override;
+            HRESULT __stdcall SetSecondaryStepUpCountEnd(unsigned int count) override;
+            HRESULT __stdcall SetSecondaryStepDownCountStart(unsigned int count) override;
+            HRESULT __stdcall SetSecondaryStepDownCountEnd(unsigned int count) override;
 
-            HRESULT __stdcall SetMemorySizeConverter(IMemorySizeConverter* _sizeConverter);
+            HRESULT __stdcall SetMemorySizeConverter(IMemorySizeConverter* _sizeConverter) override;
 
-            HRESULT __stdcall SetMemoryCap(unsigned int memorySize);
+            HRESULT __stdcall SetMemoryCap(unsigned int memorySize) override;
 
-            HRESULT __stdcall SetLayoutManager(IAsyncLoaderLayoutManager* layoutManager);
+            HRESULT __stdcall SetLayoutManager(IAsyncLoaderLayoutManager* layoutManager) override;
 
-            HRESULT __stdcall RegisterClient(IAsyncLoaderMemoryManagerClient* _client);
+            HRESULT __stdcall RegisterClient(IAsyncLoaderMemoryManagerClient* _client) override;
             HRESULT __stdcall UnregisterClient(IAsyncLoaderLayoutManagerClient* _client);
 
             // Actions...
-            HRESULT __stdcall GetClientItemSize(LoadPage loadPage, LoadSize loadSize, unsigned int* clientItemSizeToLoad);
+            HRESULT __stdcall GetClientItemSize(LoadPage loadPage, LoadSize loadSize, unsigned int* clientItemSizeToLoad) override;
 
-            HRESULT __stdcall Shutdown();
+            HRESULT __stdcall Shutdown() override;
 
             // IAsyncLoaderLayoutManagerClient
-            HRESULT __stdcall LayoutChanged();
+            HRESULT __stdcall LayoutChanged() override;
         };
     }
 }

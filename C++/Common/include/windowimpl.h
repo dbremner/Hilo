@@ -23,34 +23,34 @@ namespace Hilo
         {
         public:
             // IWindow implementation
-            HRESULT __stdcall Show(__in bool isVisible);
-            HRESULT __stdcall RedrawWindow();
-            HRESULT __stdcall RedrawWindow(__in bool eraseBackground);
-            HRESULT __stdcall UpdateWindow();
-            HRESULT __stdcall Close();
-            HRESULT __stdcall GetTitle(__out std::wstring* title);
-            HRESULT __stdcall SetTitle(__in const std::wstring& title);
-            HRESULT __stdcall GetLargeIcon(__out HICON* icon);
-            HRESULT __stdcall SetLargeIcon(__in HICON icon);
-            HRESULT __stdcall GetSmallIcon(__out HICON* icon);
-            HRESULT __stdcall SetSmallIcon(__in HICON icon);
-            HRESULT __stdcall GetSize(__out unsigned int* pixelWidth, __out unsigned int* pixelHeight);
-            HRESULT __stdcall SetSize(__in unsigned int pixelWidth, __in unsigned int pixelHeight);
-            HRESULT __stdcall SetPosition(__in unsigned int posX, __in unsigned int posY);
-            HRESULT __stdcall GetRect(__out RECT* rect);
-            HRESULT __stdcall GetParentWindowRect(__out RECT* rect);
-            HRESULT __stdcall SetRect(__in RECT rect);
-            HRESULT __stdcall SetZOrder(__in Hilo::WindowApiHelpers::IWindow *windowInsertAfter);
-            HRESULT __stdcall SetZOrder(__in ZOrderPlacement placement);
-            HRESULT __stdcall GetWindowHandle(__out HWND* hWnd);
-            HRESULT __stdcall GetParentWindowHandle(__out HWND* hWnd);
-            HRESULT __stdcall SetWindowHandle(__in HWND hWnd);
-            HRESULT __stdcall GetMessageHandler(__out IWindowMessageHandler** messageHandler);
-            HRESULT __stdcall SetMessageHandler(__in IWindowMessageHandler* messageHandler);
-            HRESULT __stdcall GetClientRect(__out RECT* clientRect);
-            HRESULT __stdcall SetCapture();
-            HRESULT __stdcall SetFocus();
-            HRESULT __stdcall IsMouseCaptured(__out bool* isMouseCaptured);
+            HRESULT __stdcall Show(__in bool isVisible) override;
+            HRESULT __stdcall RedrawWindow() override;
+            HRESULT __stdcall RedrawWindow(__in bool eraseBackground) override;
+            HRESULT __stdcall UpdateWindow() override;
+            HRESULT __stdcall Close() override;
+            HRESULT __stdcall GetTitle(__out std::wstring* title) override;
+            HRESULT __stdcall SetTitle(__in const std::wstring& title) override;
+            HRESULT __stdcall GetLargeIcon(__out HICON* icon) override;
+            HRESULT __stdcall SetLargeIcon(__in HICON icon) override;
+            HRESULT __stdcall GetSmallIcon(__out HICON* icon) override;
+            HRESULT __stdcall SetSmallIcon(__in HICON icon) override;
+            HRESULT __stdcall GetSize(__out unsigned int* pixelWidth, __out unsigned int* pixelHeight) override;
+            HRESULT __stdcall SetSize(__in unsigned int pixelWidth, __in unsigned int pixelHeight) override;
+            HRESULT __stdcall SetPosition(__in unsigned int posX, __in unsigned int posY) override;
+            HRESULT __stdcall GetRect(__out RECT* rect) override;
+            HRESULT __stdcall GetParentWindowRect(__out RECT* rect) override;
+            HRESULT __stdcall SetRect(__in RECT rect) override;
+            HRESULT __stdcall SetZOrder(__in Hilo::WindowApiHelpers::IWindow *windowInsertAfter) override;
+            HRESULT __stdcall SetZOrder(__in ZOrderPlacement placement) override;
+            HRESULT __stdcall GetWindowHandle(__out HWND* hWnd) override;
+            HRESULT __stdcall GetParentWindowHandle(__out HWND* hWnd) override;
+            HRESULT __stdcall SetWindowHandle(__in HWND hWnd) override;
+            HRESULT __stdcall GetMessageHandler(__out IWindowMessageHandler** messageHandler) override;
+            HRESULT __stdcall SetMessageHandler(__in IWindowMessageHandler* messageHandler) override;
+            HRESULT __stdcall GetClientRect(__out RECT* clientRect) override;
+            HRESULT __stdcall SetCapture() override;
+            HRESULT __stdcall SetFocus() override;
+            HRESULT __stdcall IsMouseCaptured(__out bool* isMouseCaptured) override;
 
         protected:
             Window();

@@ -40,7 +40,7 @@ namespace Hilo
         class WindowMessageHandler : public IWindowMessageHandler
         {
         public:
-            HRESULT __stdcall GetWindow(__out IWindow** window);
+            HRESULT __stdcall GetWindow(__out IWindow** window) override;
 
         protected:
             WindowMessageHandler();
@@ -51,7 +51,7 @@ namespace Hilo
                 return CastHelper<IWindowMessageHandler>::CastTo(iid, this, object);
             }
 
-            HRESULT __stdcall OnMessageReceived(IWindow* window, unsigned int message, WPARAM wParam, LPARAM lParam, LRESULT* result);
+            HRESULT __stdcall OnMessageReceived(IWindow* window, unsigned int message, WPARAM wParam, LPARAM lParam, LRESULT* result) override;
 
             // Window message handlers, to be overriden by subclasses as needed.
 

@@ -19,31 +19,31 @@ class Thumbnail : public IThumbnail, public Hilo::AsyncLoader::IAsyncLoaderItem
 {
 public:
     // Setters and Getters
-    virtual HRESULT __stdcall SetRenderingParameters(__in const RenderingParameters& drawingObjects);
-    virtual HRESULT __stdcall SetParentWindow(__in Hilo::WindowApiHelpers::IChildNotificationHandler* parentWindowMessageHandler);
-    virtual HRESULT __stdcall SetDefaultBitmap(__in ID2D1Bitmap* bitmap);
-    virtual HRESULT __stdcall GetRect(__out D2D1_RECT_F* rect);
-    virtual HRESULT __stdcall SetRect(__in D2D1_RECT_F rect);
-    virtual HRESULT __stdcall GetThumbnail(__out ID2D1Bitmap** bitmap);
-    virtual HRESULT __stdcall SetThumbnail(__in ID2D1Bitmap* newBitmap);
-    virtual HRESULT __stdcall SetThumbnailIfNull(__in ID2D1Bitmap* newBitmap);
-    virtual HRESULT __stdcall GetThumbnailInfo(__out ThumbnailInfo* thumbnailInfo);
-    virtual HRESULT __stdcall SetIsFullImage(__in bool isFullImage);
-    virtual HRESULT __stdcall GetSelectionState(__out ThumbnailSelectionState* selectionState);
-    virtual HRESULT __stdcall SetSelectionState(__in ThumbnailSelectionState selectionState);
-    virtual HRESULT __stdcall SetOpacity(float opacity);
-    virtual HRESULT __stdcall SetFontSize(float size);
+    virtual HRESULT __stdcall SetRenderingParameters(__in const RenderingParameters& drawingObjects) override;
+    virtual HRESULT __stdcall SetParentWindow(__in Hilo::WindowApiHelpers::IChildNotificationHandler* parentWindowMessageHandler) override;
+    virtual HRESULT __stdcall SetDefaultBitmap(__in ID2D1Bitmap* bitmap) override;
+    virtual HRESULT __stdcall GetRect(__out D2D1_RECT_F* rect) override;
+    virtual HRESULT __stdcall SetRect(__in D2D1_RECT_F rect) override;
+    virtual HRESULT __stdcall GetThumbnail(__out ID2D1Bitmap** bitmap) override;
+    virtual HRESULT __stdcall SetThumbnail(__in ID2D1Bitmap* newBitmap) override;
+    virtual HRESULT __stdcall SetThumbnailIfNull(__in ID2D1Bitmap* newBitmap) override;
+    virtual HRESULT __stdcall GetThumbnailInfo(__out ThumbnailInfo* thumbnailInfo) override;
+    virtual HRESULT __stdcall SetIsFullImage(__in bool isFullImage) override;
+    virtual HRESULT __stdcall GetSelectionState(__out ThumbnailSelectionState* selectionState) override;
+    virtual HRESULT __stdcall SetSelectionState(__in ThumbnailSelectionState selectionState) override;
+    virtual HRESULT __stdcall SetOpacity(float opacity) override;
+    virtual HRESULT __stdcall SetFontSize(float size) override;
 
     // Rendering methods
-    virtual HRESULT __stdcall Draw();
+    virtual HRESULT __stdcall Draw() override;
     
     // Resource management methods
-    virtual HRESULT __stdcall ReleaseThumbnail();
-    virtual HRESULT __stdcall ReleaseFullImage();
-    virtual HRESULT __stdcall DiscardResources();
+    virtual HRESULT __stdcall ReleaseThumbnail() override;
+    virtual HRESULT __stdcall ReleaseFullImage() override;
+    virtual HRESULT __stdcall DiscardResources() override;
 
     // Asynchronous loader methods
-    virtual HRESULT __stdcall EnableAsyncLoading(bool enable);
+    virtual HRESULT __stdcall EnableAsyncLoading(bool enable) override;
 
 protected:
     // Asynchronous loader support
@@ -82,14 +82,14 @@ protected:
     ComPtr<IDWriteTextLayout> m_textLayout;
 
     // IAsyncLoaderItem implementation
-    virtual HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* _cs);
-    virtual HRESULT __stdcall SetMemoryManager(IAsyncLoaderMemoryManager* _p);
-    virtual HRESULT __stdcall SetLocation(int location);
-    virtual HRESULT __stdcall GetLocation(int* location);
-    virtual HRESULT __stdcall LoadResource(unsigned int size, IUnknown** resource);
-    virtual HRESULT __stdcall SetResource(IUnknown* resource);
-    virtual HRESULT __stdcall RenderResource();
-    virtual HRESULT __stdcall Load(LoadPage loadPage, LoadSize loadSize);
-    virtual HRESULT __stdcall Unload(LoadSize loadSize);
-    virtual HRESULT __stdcall Shutdown();
+    virtual HRESULT __stdcall SetCriticalSection(CRITICAL_SECTION* _cs) override;
+    virtual HRESULT __stdcall SetMemoryManager(IAsyncLoaderMemoryManager* _p) override;
+    virtual HRESULT __stdcall SetLocation(int location) override;
+    virtual HRESULT __stdcall GetLocation(int* location) override;
+    virtual HRESULT __stdcall LoadResource(unsigned int size, IUnknown** resource) override;
+    virtual HRESULT __stdcall SetResource(IUnknown* resource) override;
+    virtual HRESULT __stdcall RenderResource() override;
+    virtual HRESULT __stdcall Load(LoadPage loadPage, LoadSize loadSize) override;
+    virtual HRESULT __stdcall Unload(LoadSize loadSize) override;
+    virtual HRESULT __stdcall Shutdown() override;
 };

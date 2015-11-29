@@ -20,12 +20,12 @@ protected:
     ~AnnotatorApplication();
 
     // Messages
-    HRESULT OnCreate();
-    HRESULT OnClose();
-    HRESULT OnSize(unsigned int width, unsigned int height);
-    HRESULT OnKeyDown(unsigned int vKey);
-    HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys);
-    HRESULT OnCommand(WPARAM wParam, LPARAM lParam);
+	virtual HRESULT OnCreate() override;
+	virtual HRESULT OnClose() override;
+	virtual HRESULT OnSize(unsigned int width, unsigned int height) override;
+	virtual HRESULT OnKeyDown(unsigned int vKey) override;
+	virtual HRESULT OnMouseWheel(D2D1_POINT_2F mousePosition, short delta, int keys) override;
+	virtual HRESULT OnCommand(WPARAM wParam, LPARAM lParam) override;
 
     // Interface helper
     bool QueryInterfaceHelper(const IID &iid, void **object)
@@ -35,7 +35,7 @@ protected:
     }
 
     // IInitializeable implementation
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
 private:
     // Image editor window and handler
@@ -53,7 +53,7 @@ private:
     bool RegisterFileAssociation();
 
     // IUIApplication implementation
-    HRESULT __stdcall OnCreateUICommand(unsigned int commandId, UI_COMMANDTYPE typeId, IUICommandHandler** commandHandler);
-    HRESULT __stdcall OnViewChanged(unsigned int viewId, UI_VIEWTYPE typeId, IUnknown* view, UI_VIEWVERB verb, int reasonCode);
-    HRESULT __stdcall OnDestroyUICommand(unsigned int commandId, UI_COMMANDTYPE typeId, IUICommandHandler* commandHandler);
+	virtual HRESULT __stdcall OnCreateUICommand(unsigned int commandId, UI_COMMANDTYPE typeId, IUICommandHandler** commandHandler) override;
+	virtual HRESULT __stdcall OnViewChanged(unsigned int viewId, UI_VIEWTYPE typeId, IUnknown* view, UI_VIEWVERB verb, int reasonCode) override;
+	virtual HRESULT __stdcall OnDestroyUICommand(unsigned int commandId, UI_COMMANDTYPE typeId, IUICommandHandler* commandHandler) override;
 };

@@ -38,6 +38,6 @@ protected:
 
 public:
      // Implementation
-    HRESULT __stdcall Setup(const std::vector<ThumbnailCell>& prevThumbnailCells, const std::vector<ThumbnailCell>& currentThumbnailCells, D2D1_SIZE_F viewSize);
+    HRESULT __stdcall Setup(const std::vector<ThumbnailCell>& prevThumbnailCells, const std::vector<ThumbnailCell>& currentThumbnailCells, D2D1_SIZE_F viewSize) override;
 
 };

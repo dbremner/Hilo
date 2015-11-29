@@ -33,8 +33,8 @@ private:
 
 protected:
     // Messages
-    virtual HRESULT OnEraseBackground();
-    virtual HRESULT OnDestroy();
+    virtual HRESULT OnEraseBackground() override;
+    virtual HRESULT OnDestroy() override;
 
     WindowApplication();
     virtual ~WindowApplication();
@@ -48,12 +48,12 @@ protected:
 
 public:
     // IInitializable implementation
-    HRESULT __stdcall Initialize();
+    HRESULT __stdcall Initialize() override;
 
     // IWindowApplication implementation
-    HRESULT __stdcall GetMainWindow(__out IWindow** mainWindow);
-    HRESULT __stdcall SetMainWindow(__in IWindow* mainWindow);
-    HRESULT __stdcall GetWindowFactory(__out IWindowFactory** windowFactory);
-    HRESULT __stdcall SetWindowFactory(__in IWindowFactory* windowFactory);
-    HRESULT __stdcall RunMessageLoop();
+    HRESULT __stdcall GetMainWindow(__out IWindow** mainWindow) override;
+    HRESULT __stdcall SetMainWindow(__in IWindow* mainWindow) override;
+    HRESULT __stdcall GetWindowFactory(__out IWindowFactory** windowFactory) override;
+    HRESULT __stdcall SetWindowFactory(__in IWindowFactory* windowFactory) override;
+    HRESULT __stdcall RunMessageLoop() override;
 };
