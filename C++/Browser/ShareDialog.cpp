@@ -170,7 +170,7 @@ int ShareDialog::ShowAuthorizationNeededDialog()
     config.pszContent                   = MAKEINTRESOURCE(IDS_AUTHORIZE_DIALOG_CONTENT);
     config.pszFooter                    = MAKEINTRESOURCE(IDS_AUTHORIZE_DIALOG_FOOTER);
     config.pButtons                     = buttons;
-    config.cButtons                     = ARRAYSIZE(buttons);
+    config.cButtons                     = _countof(buttons);
 
     TaskDialogIndirect(&config, &buttonPressed, nullptr, nullptr);
 
@@ -194,7 +194,7 @@ int ShareDialog::ShowAuthorizationCompleteDialog()
     config.pszContent                   = MAKEINTRESOURCE(IDS_AUTHORIZE_DIALOG_CONTENT2);
     config.pszFooter                    = MAKEINTRESOURCE(IDS_AUTHORIZE_DIALOG_FOOTER2);
     config.pButtons                     = buttons;
-    config.cButtons                     = ARRAYSIZE(buttons);
+    config.cButtons                     = _countof(buttons);
 
     TaskDialogIndirect(&config, &buttonPressed, nullptr, nullptr);
 

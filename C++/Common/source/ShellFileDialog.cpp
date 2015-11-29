@@ -57,7 +57,7 @@ bool ShellFileDialog::IsValidExtention(wstring extension)
 {
     bool valid = false;
 
-    unsigned int filterCount = ARRAYSIZE(m_openPictureFilter);
+    unsigned int filterCount = _countof(m_openPictureFilter);
     for( unsigned int i = 0 ; i < filterCount ; ++i )
     {
         // To prevent sub-matches, we need to make sure every extention ends with a ;.
@@ -161,7 +161,7 @@ HRESULT ShellFileDialog::ShowOpenDialog(IWindow *parentWindow, vector<ComPtr<ISh
     // Set up the type filters...
     if (SUCCEEDED(hr))
     {
-        hr = shellDialog->SetFileTypes(ARRAYSIZE(m_openPictureFilter), m_openPictureFilter);
+        hr = shellDialog->SetFileTypes(_countof(m_openPictureFilter), m_openPictureFilter);
     }
 
     // Set the default folder...
@@ -303,7 +303,7 @@ HRESULT ShellFileDialog::ShowSaveDialog(IWindow *parentWindow, IShellItem* initi
     // Set up the type filters...
     if (SUCCEEDED(hr))
     {
-        hr = shellDialog->SetFileTypes(ARRAYSIZE(m_savePictureFilter), m_savePictureFilter);
+        hr = shellDialog->SetFileTypes(_countof(m_savePictureFilter), m_savePictureFilter);
     }
 
     // Show the dialog

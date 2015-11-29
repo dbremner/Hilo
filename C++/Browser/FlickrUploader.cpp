@@ -243,14 +243,14 @@ std::wstring FlickrUploader::GetPhotoId(const HINTERNET *request, bool* errorFou
     if (result)
     {
         wchar_t headers[1024];
-        dwSize = ARRAYSIZE(headers) * sizeof(wchar_t);
+        dwSize = _countof(headers) * sizeof(wchar_t);
         result = ::WinHttpQueryHeaders(*request, WINHTTP_QUERY_RAW_HEADERS, nullptr, headers, &dwSize, nullptr);
     }
     if (result)
     {
         char resultText[1024] = {0};
         unsigned long bytesRead;
-        dwSize = ARRAYSIZE(resultText) * sizeof(char);
+        dwSize = _countof(resultText) * sizeof(char);
         result =::WinHttpReadData(*request, resultText, dwSize, &bytesRead);
         if (result)
         {
@@ -397,7 +397,7 @@ HRESULT FlickrUploader:: CreateWebProxy (WS_HEAP** heap, WS_SERVICE_PROXY** prox
             nullptr, 
             0, 
             channelProperties,
-            ARRAYSIZE(channelProperties),
+			_countof(channelProperties),
             proxy, 
             *error);
     }

@@ -315,7 +315,7 @@ HRESULT BrowserApplication::InitializeMediaPane(IWindow** window)
             // Specify which touch gestures to handle based on the gesture configuration. This can also be 
             // called during the WM_NOTIFY message if an application wanted to dynamically update
             // which gestures to support based on application state
-            ::SetGestureConfig(hWnd, 0, ARRAYSIZE(config), config, sizeof(GESTURECONFIG));
+            ::SetGestureConfig(hWnd, 0, _countof(config), config, sizeof(GESTURECONFIG));
         }
     }
 

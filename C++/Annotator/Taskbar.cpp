@@ -55,15 +55,15 @@ HRESULT Taskbar::CreateThumbnailToolbarButtons(ThumbnailToobarButton backButton,
         buttons[0].dwFlags = THBF_ENABLED | THBF_DISMISSONCLICK;;
         buttons[0].iId = backButton.buttonId;
         buttons[0].iBitmap = 0;
-        StringCchCopyW(buttons[0].szTip, ARRAYSIZE(buttons[0].szTip), L"Backward Button");
+        StringCchCopyW(buttons[0].szTip, _countof(buttons[0].szTip), L"Backward Button");
         // Second button
         buttons[1].dwMask = THB_BITMAP | THB_TOOLTIP | THB_FLAGS;
         buttons[1].dwFlags = THBF_ENABLED | THBF_DISMISSONCLICK;
         buttons[1].iId = nextButton.buttonId;
         buttons[1].iBitmap = 1;
-        StringCchCopyW(buttons[1].szTip, ARRAYSIZE(buttons[1].szTip), L"Forward Button");
+        StringCchCopyW(buttons[1].szTip, _countof(buttons[1].szTip), L"Forward Button");
         // Set the buttons to be the thumbnail toolbar
-        hr = m_taskbarList->ThumbBarAddButtons(m_hWnd, ARRAYSIZE(buttons), buttons);
+        hr = m_taskbarList->ThumbBarAddButtons(m_hWnd, _countof(buttons), buttons);
     }
     return hr;
 }
@@ -88,7 +88,7 @@ HRESULT Taskbar::EnableThumbnailToolbarButtons(ThumbnailToobarButton backButton,
         }
         buttons[0].iId = backButton.buttonId;
         buttons[0].iBitmap = 0;
-        StringCchCopyW(buttons[0].szTip, ARRAYSIZE(buttons[0].szTip), L"Backward Button");
+        StringCchCopyW(buttons[0].szTip, _countof(buttons[0].szTip), L"Backward Button");
         // Second button
         buttons[1].dwMask = THB_BITMAP | THB_TOOLTIP | THB_FLAGS;
         if (nextButton.enabled)
@@ -101,9 +101,9 @@ HRESULT Taskbar::EnableThumbnailToolbarButtons(ThumbnailToobarButton backButton,
         }
         buttons[1].iId = nextButton.buttonId;
         buttons[1].iBitmap = 1;
-        StringCchCopyW(buttons[1].szTip, ARRAYSIZE(buttons[1].szTip), L"Forward Button");
+        StringCchCopyW(buttons[1].szTip, _countof(buttons[1].szTip), L"Forward Button");
         // Update the buttons of the thumbnail toolbar
-        hr = m_taskbarList->ThumbBarUpdateButtons(m_hWnd, ARRAYSIZE(buttons), buttons);
+        hr = m_taskbarList->ThumbBarUpdateButtons(m_hWnd, _countof(buttons), buttons);
     }
     return hr;
 }

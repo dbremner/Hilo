@@ -274,7 +274,7 @@ HRESULT MediaPaneMessageHandler::CreateDeviceIndependentResources()
         // Width and height will be determined later.
         hr = m_dWriteFactory->CreateTextLayout(
             initialText,
-            ARRAYSIZE(initialText) - 1,
+			_countof(initialText) - 1,
             m_textFormat,
             50,
             50,

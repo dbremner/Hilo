@@ -278,7 +278,7 @@ HRESULT ImageEditorHandler::CreateDeviceIndependentResources()
                 D2D1_DASH_STYLE_CUSTOM,
                 0.0f),
             dashes,
-            ARRAYSIZE(dashes),
+			_countof(dashes),
             &strokeStyleCustomOffsetZero);
     }
 

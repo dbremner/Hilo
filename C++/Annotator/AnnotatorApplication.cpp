@@ -514,7 +514,7 @@ bool AnnotatorApplication::RegisterFileAssociation()
     externalFileName += L"RegistrationHelper.exe";
 
     // Construct file extensions
-    unsigned int fileTypeCount = ARRAYSIZE(FileTypeExtensions);
+    unsigned int fileTypeCount = _countof(FileTypeExtensions);
     std::wstring extensions;
     for( unsigned int i = 0 ; i < fileTypeCount ; ++i )
     {

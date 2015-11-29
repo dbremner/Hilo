@@ -56,7 +56,7 @@ HRESULT UICommandHandler::UpdateProperty(unsigned int commandId, REFPROPERTYKEY 
         }
 
         // Populate the gallery with the four available line sizes.
-        for (int i = 0; i < ARRAYSIZE(LineRibbonImageIds); i++)
+        for (int i = 0; i < _countof(LineRibbonImageIds); i++)
         {
             // Create a new property set for each item.
             ComPtr<IPropertySet> item;
