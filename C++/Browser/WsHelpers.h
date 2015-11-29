@@ -11,15 +11,11 @@
 
 class WsError
 {
-    WS_ERROR* m_errorHandle;
+    WS_ERROR* m_errorHandle{nullptr};
 
 public:
 
-    WsError() :
-        m_errorHandle(0)
-    {
-        // Do nothing
-    }
+	WsError() = default;
 
     WsError(WS_ERROR* errorHandle) :
         m_errorHandle(errorHandle)
@@ -64,15 +60,11 @@ public:
 
 class WsHeap
 {
-    WS_HEAP* m_heapHandle;
+    WS_HEAP* m_heapHandle{nullptr};
 
 public:
 
-    WsHeap() :
-        m_heapHandle(0)
-    {
-        // Do nothing
-    }
+	WsHeap() = default;
 
     ~WsHeap()
     {
@@ -100,17 +92,12 @@ public:
 
 class WsServiceProxy
 {
-    WS_SERVICE_PROXY* m_serviceProxyHandle;
-    bool m_open;
+    WS_SERVICE_PROXY* m_serviceProxyHandle{nullptr};
+    bool m_open{false};
 
 public:
 
-    WsServiceProxy() :
-        m_serviceProxyHandle(0),
-        m_open(false)
-    {
-        // Do nothing
-    }
+	WsServiceProxy() = default;
 
     ~WsServiceProxy()
     {
@@ -155,17 +142,12 @@ public:
 
 class WsServiceHost
 {
-    WS_SERVICE_HOST* m_serviceHostHandle;
-    bool m_open;
+    WS_SERVICE_HOST* m_serviceHostHandle{nullptr};
+    bool m_open{false};
 
 public:
 
-    WsServiceHost() :
-        m_serviceHostHandle(0),
-        m_open(false)
-    {
-        // Do nothing
-    }
+	WsServiceHost() = default;
 
     ~WsServiceHost()
     {
