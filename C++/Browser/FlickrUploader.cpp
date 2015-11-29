@@ -65,7 +65,7 @@ std::wstring FlickrUploader::GetToken(const std::wstring& frob)
         _FlickrRequest request = 
         {
             (wchar_t*)(flickr_auth_getToken_method_name), 
-            (wchar_t*) flickr_api_key, // api_key
+            flickr_api_key, // api_key
             nullptr, // api_sig computed later
             (wchar_t*)frob.c_str()
         };
@@ -306,7 +306,7 @@ std::wstring FlickrUploader::ObtainFrob()
         _FlickrRequest request = 
         {
             (wchar_t*) flickr_auth_getFrob_method_name, 
-            (wchar_t*) flickr_api_key, // api_key
+            flickr_api_key, // api_key
             nullptr, // api_sig computed later
             nullptr // frob is not needed
         };
