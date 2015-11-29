@@ -31,14 +31,14 @@ HRESULT MoverAnimation::CreateAnimatedThumbnailCells(
 {
     m_animatedThumbnailCells.clear();
 
-    for (auto currentCell = currentThumbnailCells.begin(); currentCell != currentThumbnailCells.end(); currentCell++)
+    for (auto currentCell = currentThumbnailCells.begin(); currentCell != currentThumbnailCells.end(); ++currentCell)
     {
         D2D1_RECT_F targetPosition = currentCell->position;
         D2D1_POINT_2F startPoint = D2D1::Point2F(
             viewSize.width + (currentCell->position.right - currentCell->position.top) / 2,
             (currentCell->position.bottom + currentCell->position.top) / 2);
 
-        for (auto prevCell = prevThumbnailCells.begin(); prevCell != prevThumbnailCells.end(); prevCell++)
+        for (auto prevCell = prevThumbnailCells.begin(); prevCell != prevThumbnailCells.end(); ++prevCell)
         {
             if (prevCell->control == currentCell->control)
             {
@@ -83,7 +83,7 @@ HRESULT MoverAnimation::BuildStoryboard()
 
     if (SUCCEEDED(hr))
     {
-        for ( auto animatedCell = m_animatedThumbnailCells.begin(); animatedCell != m_animatedThumbnailCells.end(); animatedCell++)
+        for ( auto animatedCell = m_animatedThumbnailCells.begin(); animatedCell != m_animatedThumbnailCells.end(); ++animatedCell)
         {
             D2D1_POINT_2F startPoint = animatedCell->start;
             D2D1_POINT_2F endPoint = animatedCell->end;

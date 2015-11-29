@@ -216,7 +216,7 @@ HRESULT AsyncLoaderLayoutManager::FireLayoutChanged()
     CriticalSectionLocker l(m_criticalSection);
 
     //std::vector<ComPtr<IAsyncLoaderLayoutManagerClient>>::iterator it;
-    for (auto client = m_clients.begin() ; client != m_clients.end() ; client++)
+    for (auto client = m_clients.begin() ; client != m_clients.end() ; ++client)
     {
         (*client)->LayoutChanged();
     }
@@ -368,7 +368,7 @@ HRESULT AsyncLoaderLayoutManager::Shutdown()
 {
     CriticalSectionLocker l(m_criticalSection);
 
-    for (auto client = m_clients.begin(); client != m_clients.end(); client++)
+    for (auto client = m_clients.begin(); client != m_clients.end(); ++client)
     {
         *client = nullptr;
     }

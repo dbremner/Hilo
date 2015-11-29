@@ -34,7 +34,7 @@ HRESULT FlyerAnimation::CreateAnimatedThumbnailCells(const std::vector<Thumbnail
     D2D1_POINT_2F entryCenterPoint = Point2F(10.0f + viewSize.width * 0.5f, -(viewSize.height * 0.5f + 1.0f));
 
     // Construct the animated thumbnail cells for flying-in thumbnail controls
-    for (auto currentCell = currentThumbnailCells.begin(); currentCell != currentThumbnailCells.end(); currentCell ++)
+    for (auto currentCell = currentThumbnailCells.begin(); currentCell != currentThumbnailCells.end(); ++currentCell)
     {
         D2D1_RECT_F targetPosition = currentCell->position;
         D2D1_POINT_2F targetPoint = D2D1::Point2F ((targetPosition.right + targetPosition.left )/2, 
@@ -48,7 +48,7 @@ HRESULT FlyerAnimation::CreateAnimatedThumbnailCells(const std::vector<Thumbnail
     D2D1_POINT_2F exitCenterPoint = Point2F(10.0f + viewSize.width * 0.5f, -(viewSize.height * 0.5f + 1.0f));
 
     // Construct the animated thumbnail cells for flying-out thumbnail controls
-    for (auto prevCell = prevThumbnailCells.begin(); prevCell != prevThumbnailCells.end(); prevCell++)
+    for (auto prevCell = prevThumbnailCells.begin(); prevCell != prevThumbnailCells.end(); ++prevCell)
     {
         D2D1_RECT_F startPosition = prevCell->position;
         D2D1_POINT_2F startPoint = D2D1::Point2F (
@@ -86,7 +86,7 @@ HRESULT FlyerAnimation::BuildStoryboard()
 
     if (SUCCEEDED (hr))
     {
-        for (auto iter = m_geometryAnimationVariables.begin(); iter!= m_geometryAnimationVariables.end(); iter++)
+        for (auto iter = m_geometryAnimationVariables.begin(); iter!= m_geometryAnimationVariables.end(); ++iter)
         {
             // Update the animation variable for the length
             float length=0;
@@ -191,7 +191,7 @@ HRESULT FlyerAnimation::CreatePath()
     }
 
     m_geometryAnimationVariables.clear();
-    for (auto animatedCell = m_animatedThumbnailCells.begin(); animatedCell != m_animatedThumbnailCells.end(); animatedCell ++)
+    for (auto animatedCell = m_animatedThumbnailCells.begin(); animatedCell != m_animatedThumbnailCells.end(); ++animatedCell)
     {
         ComPtr<ID2D1GeometrySink> sink;
         FlyerAnimationVar animationVar;

@@ -158,7 +158,7 @@ HRESULT SimpleImage::DrawImage(const D2D1_RECT_F& drawingRect, const D2D1_RECT_F
     // The scale is relative to the full bitmap size
     float scale = GetCurrentImageScale();
 
-    for (auto iter = m_imageOperations.begin() ; iter != m_imageOperations.end(); iter++)
+    for (auto iter = m_imageOperations.begin() ; iter != m_imageOperations.end(); ++iter)
     {
         ComPtr<IDrawGeometryOperation> drawOperation;
         if (SUCCEEDED((*iter).QueryInterface(&drawOperation)))
@@ -378,7 +378,7 @@ HRESULT SimpleImage::Save(__in IShellItem *saveAsItem)
 //
 HRESULT SimpleImage::DiscardResources()
 {
-    for (auto operation = m_imageOperations.begin(); operation != m_imageOperations.end(); operation++)
+    for (auto operation = m_imageOperations.begin(); operation != m_imageOperations.end(); ++operation)
     {
         ComPtr<IDrawGeometryOperation> drawOperation;
         if (SUCCEEDED((*operation).QueryInterface(&drawOperation)))

@@ -180,7 +180,7 @@ HRESULT WindowLayout::Finalize()
 
     // Call each child window's 'Finalize' method. This allows each child window to remove any COM object dependencies
     // and stops the asynchronous loader threads.
-    for (auto iter = m_childWindows.begin(); iter < m_childWindows.end(); iter++)
+    for (auto iter = m_childWindows.begin(); iter < m_childWindows.end(); ++iter)
     {
         // Retrieve the message handler
         ComPtr<IWindowMessageHandler> handler;

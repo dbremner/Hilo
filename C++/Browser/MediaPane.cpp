@@ -216,7 +216,7 @@ HRESULT MediaPaneMessageHandler::CreateDeviceResources()
             m_renderingParameters.renderTarget = m_renderTarget;
 
             // Make sure rendering parameters are updated in all thumbnails if they've already been created
-            for (auto thumbnail = m_thumbnailControls.begin() ; thumbnail != m_thumbnailControls.end(); thumbnail++)
+            for (auto thumbnail = m_thumbnailControls.begin() ; thumbnail != m_thumbnailControls.end(); ++thumbnail)
             {
                 (*thumbnail)->SetRenderingParameters(m_renderingParameters);
             }
@@ -231,7 +231,7 @@ HRESULT MediaPaneMessageHandler::CreateDeviceResources()
 
 HRESULT MediaPaneMessageHandler::DiscardDeviceResources()
 {
-    for (auto thumbnail = m_thumbnailControls.begin(); thumbnail != m_thumbnailControls.end(); thumbnail++)
+    for (auto thumbnail = m_thumbnailControls.begin(); thumbnail != m_thumbnailControls.end(); ++thumbnail)
     {
         (*thumbnail)->DiscardResources();
     }
@@ -772,7 +772,7 @@ void MediaPaneMessageHandler::SetSlideShowMode(bool isSlideShow, unsigned int im
     else
     {
         // Make sure memory is released for stored full images
-        for (auto thumbnail = m_thumbnailControls.begin(); thumbnail != m_thumbnailControls.end(); thumbnail++)
+        for (auto thumbnail = m_thumbnailControls.begin(); thumbnail != m_thumbnailControls.end(); ++thumbnail)
         {
             (*thumbnail)->ReleaseFullImage();
         }
@@ -1154,7 +1154,7 @@ HRESULT MediaPaneMessageHandler::SetCurrentLocation(IShellItem* shellFolder, boo
     // Ignore the returned HRESULT because it's possible no elements are found in this folder
     ShellItemsLoader::EnumerateFolderItems(shellFolder, FileTypeImage, recursive, shellItems);
 
-    for (auto shellItem = shellItems.begin(); shellItem != shellItems.end(); shellItem++)
+    for (auto shellItem = shellItems.begin(); shellItem != shellItems.end(); ++shellItem)
     {
         ThumbnailInfo info(*shellItem);
         info.fileType = FileTypeImage;

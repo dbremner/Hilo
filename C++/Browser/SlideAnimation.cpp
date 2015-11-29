@@ -33,7 +33,7 @@ HRESULT SlideAnimation::CreateAnimatedThumbnailCells(
 {
     m_animatedThumbnailCells.clear();
 
-    for (auto currentCell = currentThumbnailCells.begin(); currentCell != currentThumbnailCells.end(); currentCell++)
+    for (auto currentCell = currentThumbnailCells.begin(); currentCell != currentThumbnailCells.end(); ++currentCell)
     {
         D2D1_RECT_F targetPosition = currentCell->position;
         D2D1_POINT_2F endPoint = D2D1::Point2F (
@@ -45,7 +45,7 @@ HRESULT SlideAnimation::CreateAnimatedThumbnailCells(
             AnimatedThumbnailCell(*currentCell, startPoint, endPoint, D2D1::Point2F(0, 0), true));
     }
 
-    for (auto prevCell = prevThumbnailCells.begin(); prevCell != prevThumbnailCells.end(); prevCell++)
+    for (auto prevCell = prevThumbnailCells.begin(); prevCell != prevThumbnailCells.end(); ++prevCell)
     {
         D2D1_RECT_F startPosition = prevCell->position;
         D2D1_POINT_2F startPoint = D2D1::Point2F (
@@ -75,7 +75,7 @@ HRESULT SlideAnimation::BuildStoryboard()
     if (SUCCEEDED (hr))
     {
         // Populate all the animated thumbnail cells
-        for (auto animatedCell = m_animatedThumbnailCells.begin(); animatedCell != m_animatedThumbnailCells.end(); animatedCell++)
+        for (auto animatedCell = m_animatedThumbnailCells.begin(); animatedCell != m_animatedThumbnailCells.end(); ++animatedCell)
         {
             D2D1_POINT_2F startPoint = animatedCell->start;
             D2D1_POINT_2F endPoint = animatedCell->end;

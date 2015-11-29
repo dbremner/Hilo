@@ -132,7 +132,7 @@ int ShareDialog::GetImageUploadCount()
         int count = 0;
 
         // Check number of images that are selected
-        for (auto image = m_images->begin(); image != m_images->end(); image++)
+        for (auto image = m_images->begin(); image != m_images->end(); ++image)
         {
             // Get selection state
             ThumbnailSelectionState selectionState;
@@ -285,7 +285,7 @@ unsigned long WINAPI ShareDialog::ImageUploadThreadProc(void* /*threadData*/)
 
     // Upload pictures
     int currentIndex = 0;
-    for(auto image = m_images->begin(); image != m_images->end(); image++)
+    for(auto image = m_images->begin(); image != m_images->end(); ++image)
     {
         if (BST_CHECKED == uploadSelection)
         {

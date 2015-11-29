@@ -224,7 +224,7 @@ HRESULT CarouselPaneMessageHandler::SetCurrentLocation(IShellItem* shellFolder, 
     if (SUCCEEDED(hr))
     {
         // Add each subfolder ShellItem to the inner carousel orbit
-        for ( auto ti = shellItems.begin() ; ti != shellItems.end(); ti++ )
+        for ( auto ti = shellItems.begin() ; ti != shellItems.end(); ++ti )
         {
             ThumbnailInfo info(*ti);
             info.fileType = FileTypeFolder;
@@ -459,7 +459,7 @@ void CarouselPaneMessageHandler::DrawHistoryItems()
     HRESULT hr = S_OK;
 
     // Draw all history orbits
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter)
     {
         // Render orbit
         D2D1_ELLIPSE orbit;
@@ -479,7 +479,7 @@ void CarouselPaneMessageHandler::DrawHistoryItems()
     }
 
     // Draw all history thumbnails
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter)
     {
         // Render thumbnail
         D2D1_POINT_2F point;
@@ -559,7 +559,7 @@ void CarouselPaneMessageHandler::DrawOrbitItems()
             }
         }
 
-        for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); iter++)
+        for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); ++iter)
         {
             // Determine when to draw based on relative value of y
             if ((sin(currentRotation) > 0 && pass == 0) || (sin(currentRotation) <= 0 && pass == 1))
@@ -877,7 +877,7 @@ HRESULT CarouselPaneMessageHandler::OnLeftMouseButtonUp(D2D1_POINT_2F mousePosit
 
         if (m_mouseMovePoints.size() < 3)
         {
-            for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); iter++)
+            for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); ++iter)
             {
                 D2D1_RECT_F rect;
                 hr = ((*iter)->GetRect(&rect));
@@ -925,7 +925,7 @@ HRESULT CarouselPaneMessageHandler::OnLeftMouseButtonUp(D2D1_POINT_2F mousePosit
     {
         unsigned int index = 0;
 
-        for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++)
+        for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter)
         {
             D2D1_RECT_F rect;
             hr = (*iter).Thumbnail->GetRect(&rect);
@@ -1337,7 +1337,7 @@ HRESULT CarouselPaneMessageHandler::DiscardDeviceResources()
 {
     HRESULT hr = S_OK;
 
-    for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); iter++)
+    for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); ++iter)
     {
         ComPtr<IThumbnail> thumbnail;
 
@@ -1349,7 +1349,7 @@ HRESULT CarouselPaneMessageHandler::DiscardDeviceResources()
         thumbnail->DiscardResources();
     }
 
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter)
     {
         ComPtr<IThumbnail> thumbnail;
 
@@ -1471,7 +1471,7 @@ HRESULT CarouselPaneMessageHandler::ResetOrbitValues()
         // Update history orbits and thumbnails
         unsigned int index = 0;
 
-        for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++, index++)
+        for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter, index++)
         {
             if (SUCCEEDED(hr))
             {
@@ -1507,7 +1507,7 @@ HRESULT CarouselPaneMessageHandler::AnimateHistoryAddition(bool isUpdatingWindow
     // Animate each outside history orbit
     unsigned int index = 0;
 
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++, index++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter, index++)
     {
         if (index < m_carouselHistoryItems.size() - 1)
         {
@@ -1631,7 +1631,7 @@ HRESULT CarouselPaneMessageHandler::AnimateHistoryExpansion()
     // Animate each outside history orbit
     unsigned int index = 0;
 
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++, index++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter, index++)
     {
         if (SUCCEEDED(hr))
         {
@@ -1905,7 +1905,7 @@ HRESULT CarouselPaneMessageHandler::CheckForMouseHover(D2D1_POINT_2F mousePositi
     HRESULT hr = S_OK;
 
     // Deterine if any inner orbit item has mouse focus
-    for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); iter++)
+    for (auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); ++iter)
     {
         ThumbnailSelectionState selectionState;
         (*iter)->GetSelectionState(&selectionState);
@@ -1946,7 +1946,7 @@ HRESULT CarouselPaneMessageHandler::CheckForMouseHover(D2D1_POINT_2F mousePositi
     }
 
     // Determine if any history item has mouse focus
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter)
     {
         ThumbnailSelectionState selectionState = SelectionStateNone;
 
@@ -2057,7 +2057,7 @@ HRESULT CarouselPaneMessageHandler::ClearMouseHover()
 {
     HRESULT hr = S_OK;
 
-    for ( auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); iter++)
+    for ( auto iter = m_carouselItems.begin(); iter != m_carouselItems.end(); ++iter)
     {
         ComPtr<IThumbnail> thumbnail;
 
@@ -2068,7 +2068,7 @@ HRESULT CarouselPaneMessageHandler::ClearMouseHover()
         }
     }
 
-    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); iter++)
+    for (auto iter = m_carouselHistoryItems.begin(); iter != m_carouselHistoryItems.end(); ++iter)
     {
         ComPtr<IThumbnail> thumbnail;
 

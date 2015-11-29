@@ -93,7 +93,7 @@ HRESULT ImageEditorHandler::LoadShellItems(const std::vector<ComPtr<IShellItem> 
     HRESULT hr = Reset();
     if (SUCCEEDED(hr))
     {
-        for (auto shellItem = shellItems->begin() ; shellItem != shellItems->end(); shellItem++)
+        for (auto shellItem = shellItems->begin() ; shellItem != shellItems->end(); ++shellItem)
         {
             ImageInfo info(*shellItem);
             ImageItem newItem;
