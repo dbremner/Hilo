@@ -239,7 +239,7 @@ HRESULT UICommandHandler::CreateUIImageFromBitmapResource(int imageID, IUIImage*
 
     if (!m_ribbonImageFactory)
     {
-        hr = CoCreateInstance(CLSID_UIRibbonImageFromBitmapFactory, 0, CLSCTX_ALL, IID_PPV_ARGS(&m_ribbonImageFactory));
+        hr = CoCreateInstance(CLSID_UIRibbonImageFromBitmapFactory, nullptr, CLSCTX_ALL, IID_PPV_ARGS(&m_ribbonImageFactory));
         if (FAILED(hr))
         {
             return hr;

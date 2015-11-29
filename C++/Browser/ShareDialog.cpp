@@ -311,7 +311,7 @@ unsigned long WINAPI ShareDialog::ImageUploadThreadProc(void* /*threadData*/)
             if (errFound)
             {
                 std::wstring errorMessage = L"Upload failed for: " + info.GetFileName() + L" Photo Id:" + photoId;
-                MessageBox(0, errorMessage.c_str(), L"Flickr Upload Error", MB_ICONSTOP|MB_SETFOREGROUND);
+                MessageBox(nullptr, errorMessage.c_str(), L"Flickr Upload Error", MB_ICONSTOP|MB_SETFOREGROUND);
             }
             else
             {

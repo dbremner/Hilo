@@ -55,7 +55,7 @@ HRESULT  Window::GetSize(unsigned int* pixelWidth, unsigned int* pixelHeight)
 
 HRESULT Window::SetSize(unsigned int pixelWidth, unsigned int pixelHeight)
 {
-    if (!::SetWindowPos(m_hWnd, 0, 0, 0, pixelWidth, pixelHeight, SWP_NOMOVE | SWP_NOREPOSITION | SWP_NOZORDER))
+    if (!::SetWindowPos(m_hWnd, nullptr, 0, 0, pixelWidth, pixelHeight, SWP_NOMOVE | SWP_NOREPOSITION | SWP_NOZORDER))
     {
         return HRESULT_FROM_WIN32(::GetLastError());
     }
@@ -65,7 +65,7 @@ HRESULT Window::SetSize(unsigned int pixelWidth, unsigned int pixelHeight)
 
 HRESULT Window::SetPosition(unsigned int posX, unsigned int posY)
 {
-    if (!::SetWindowPos(m_hWnd, 0, posX, posY, 0, 0, SWP_NOSIZE | SWP_NOREPOSITION | SWP_NOZORDER))
+    if (!::SetWindowPos(m_hWnd, nullptr, posX, posY, 0, 0, SWP_NOSIZE | SWP_NOREPOSITION | SWP_NOZORDER))
     {
         return HRESULT_FROM_WIN32(::GetLastError());
     }
@@ -107,7 +107,7 @@ HRESULT Window::SetRect(RECT rect)
 {
     HRESULT hr = ::SetWindowPos(
         m_hWnd,
-        0,
+        nullptr,
         rect.left,
         rect.top,
         rect.right - rect.left,

@@ -255,7 +255,7 @@ std::wstring FlickrUploader::GetPhotoId(const HINTERNET *request, bool* errorFou
         if (result)
         {
             // Convert string to wstring
-            int wideSize = MultiByteToWideChar(CP_UTF8, 0, resultText, -1, 0, 0);
+            int wideSize = MultiByteToWideChar(CP_UTF8, 0, resultText, -1, nullptr, 0);
             wchar_t* wideString = new wchar_t[wideSize];
             result = MultiByteToWideChar(CP_UTF8, 0, resultText, -1, wideString, wideSize);
             if (result)
@@ -430,13 +430,13 @@ std::wstring FlickrUploader::GetXmlElementValueByName(const std::wstring& xmlCon
     ComPtr<IXmlReaderInput> readerInput;
     if (SUCCEEDED(hr))
     {
-        hr = CreateXmlReaderInputWithEncodingCodePage(stream, 0, CP_WINNEUTRAL, false, 0, &readerInput);
+        hr = CreateXmlReaderInputWithEncodingCodePage(stream, nullptr, CP_WINNEUTRAL, false, nullptr, &readerInput);
     }
     // Create Xml Reader
     ComPtr<IXmlReader> reader;
     if (SUCCEEDED(hr))
     {
-        hr = CreateXmlReader(IID_IXmlReader, reinterpret_cast<void**>(&reader), 0);
+        hr = CreateXmlReader(IID_IXmlReader, reinterpret_cast<void**>(&reader), nullptr);
     }
     if (SUCCEEDED(hr))
     {

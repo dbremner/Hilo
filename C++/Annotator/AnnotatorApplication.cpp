@@ -532,7 +532,7 @@ bool AnnotatorApplication::RegisterFileAssociation()
 
     shellExcuteInfo.cbSize         = sizeof( SHELLEXECUTEINFO );
     shellExcuteInfo.fMask          = 0;
-    shellExcuteInfo.hwnd           = 0;
+    shellExcuteInfo.hwnd           = nullptr;
     shellExcuteInfo.lpVerb         = L"runas"; // Require elevated privilege
     shellExcuteInfo.lpFile         = externalFileName.c_str();
     shellExcuteInfo.lpParameters   = commandLine.c_str();

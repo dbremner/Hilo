@@ -29,7 +29,7 @@ public:
 
     ~WsError()
     {
-        if (0 != m_errorHandle)
+        if (nullptr != m_errorHandle)
         {
             WsFreeError(m_errorHandle);
         }
@@ -76,7 +76,7 @@ public:
 
     ~WsHeap()
     {
-        if (0 != m_heapHandle)
+        if (nullptr != m_heapHandle)
         {
             WsFreeHeap(m_heapHandle);
         }
@@ -114,11 +114,11 @@ public:
 
     ~WsServiceProxy()
     {
-        if (0 != m_serviceProxyHandle)
+        if (nullptr != m_serviceProxyHandle)
         {
             if (m_open)
             {
-                Close(/*async context*/0, /*error*/0);
+                Close(/*async context*/nullptr, /*error*/nullptr);
             }
 
             WsFreeServiceProxy(m_serviceProxyHandle);
@@ -169,11 +169,11 @@ public:
 
     ~WsServiceHost()
     {
-        if (0 != m_serviceHostHandle)
+        if (nullptr != m_serviceHostHandle)
         {
             if (m_open)
             {
-                Close(/*async context*/0, /*error*/0);
+                Close(/*async context*/nullptr, /*error*/nullptr);
             }
 
             WsFreeServiceHost(m_serviceHostHandle);
